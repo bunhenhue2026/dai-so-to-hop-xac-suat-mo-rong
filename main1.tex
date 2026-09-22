@@ -1,0 +1,1194 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage[utf8]{inputenc}
+\usepackage[T5]{fontenc}
+\usepackage[vietnamese]{babel}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{tcolorbox}
+\usepackage{colortbl} % Cần thiết cho \cellcolor
+\usepackage{xcolor}
+% Khai báo màu sắc cho tiêu đề
+\definecolor{mainpink}{RGB}{220, 20, 120}
+% Khai báo font tiếng Việt cho XeLaTeX
+\usepackage{fontspec}
+\setmainfont{Times New Roman} 
+\usepackage{xcolor}
+% Khai báo màu sắc cho tiêu đề
+\definecolor{headerbg}{RGB}{250, 240, 240}
+\definecolor{headerborder}{RGB}{150, 50, 50}
+\definecolor{mymagenta}{RGB}{200, 0, 100}
+\definecolor{myred}{RGB}{220, 50, 30}
+% Định nghĩa màu sắc
+\definecolor{headerbg}{RGB}{250, 240, 240}
+\definecolor{headerborder}{RGB}{150, 50, 50}
+% Định nghĩa màu sắc
+\definecolor{headerbg}{RGB}{250, 240, 240}
+\definecolor{headerborder}{RGB}{150, 50, 50}
+\definecolor{headerbg}{RGB}{250, 240, 240}
+\definecolor{headerborder}{RGB}{150, 50, 50}
+\definecolor{tablegreen}{RGB}{220, 240, 220}
+\definecolor{tableblue}{RGB}{220, 230, 250}
+\definecolor{tablepink}{RGB}{250, 220, 220}
+% Định nghĩa màu sắc
+\definecolor{maincolor}{RGB}{0, 80, 150}   % Màu xanh đậm cho tiêu đề
+\definecolor{headerbg}{RGB}{240, 248, 255} % Màu nền xanh nhạt
+% Định nghĩa lệnh hiển thị tổ hợp (đã sửa lỗi)
+\newcommand{\Comb}[2]{\mathrm{C}_{#1}^{#2}}
+
+% Định nghĩa lệnh hiển thị tổ hợp
+\newcommand{\C}[2]{\mathrm{C}_{#1}^{#2}}
+% Cấu hình lề
+\geometry{top=2cm, bottom=2cm, left=2cm, right=2cm}
+% Định nghĩa màu sắc
+\definecolor{maincolor}{RGB}{0, 80, 150} % Màu xanh đậm cho tiêu đề
+\definecolor{headerbg}{RGB}{240, 248, 255} % Màu nền xanh nhạt
+% ==================== GÓI THỤT ĐẦU DÒNG ====================
+\usepackage{indentfirst} % Tự động thụt đầu dòng cho đoạn văn đầu tiên sau tiêu đề
+% Đặt độ thụt đầu dòng (mặc định là 15pt, bạn có thể tăng/giảm)
+\setlength{\parindent}{15pt}
+\usepackage{hyperref}
+\hypersetup{
+	bookmarks=true,         % Bật tính năng bookmark
+	bookmarksnumbered=true, % Đánh số thứ tự cho bookmark (1, 1.1, 1.2...)
+	bookmarksopen=true,     % Mở rộng tất cả bookmark khi mở file
+	colorlinks=true,        % Tô màu các liên kết
+	linkcolor=blue,         % Màu liên kết nội bộ
+	citecolor=green,        % Màu liên kết trích dẫn
+	urlcolor=red,           % Màu liên kết URL
+	pdftitle={Chuyên đề Tổ hợp Xác suất}, % Tiêu đề file PDF
+	pdfauthor={Tác giả}     % Tác giả file PDF
+}
+\usepackage{graphicx}
+\usepackage{setspace}
+
+\begin{document}
+	% ==================== TIÊU ĐỀ LỜI MỞ ĐẦU ====================
+	% Dùng \section* để không đánh số (1., 2.), nhưng thêm \phantomsection và \addcontentsline để đưa vào Bookmark & Mục lục
+	\phantomsection
+	\addcontentsline{toc}{section}{LỜI MỞ ĐẦU}
+	\section*{LỜI MỞ ĐẦU}
+	
+	\begin{tcolorbox}[colback=headerbg, colframe=maincolor, arc=3mm, boxrule=1.5pt, halign=center]
+		\textbf{\LARGE LỜI MỞ ĐẦU}
+	\end{tcolorbox}
+	
+	\vspace{0.5cm}
+	
+	% ==================== NỘI DUNG LỜI MỞ ĐẦU ====================
+	\indent Toán học nói chung và Tổ hợp -- Xác suất nói riêng luôn đóng vai trò nòng cốt trong việc phát triển tư duy logic, khả năng phân tích và giải quyết vấn đề phức tạp. Trong các kỳ thi Học sinh giỏi cũng như Kỳ thi Tốt nghiệp THPT, các bài toán Tổ hợp -- Xác suất vận dụng cao thường là những thử thách mang tính phân loại lớn, đòi hỏi học sinh không chỉ nắm chắc lý thuyết cơ bản mà còn phải linh hoạt trong tư duy và thành thạo các phương pháp xử lý chuyên sâu.
+	
+	\vspace{0.3cm}
+	
+	\indent Nhằm trợ giúp các em học sinh xây dựng một hệ thống phương pháp luận chặt chẽ và trang bị các kỹ thuật giải toán hiện đại, dự án \textbf{``Chuyên Đề Mở Rộng: Phương Pháp Giải Bài Toán Tổ Hợp \& Xác Suất''} được biên soạn và hoàn thiện. Tài liệu này đi sâu vào khai thác 6 chủ đề trọng tâm:
+	
+	\vspace{0.3cm}
+	
+	\begin{itemize}[leftmargin=*, label=\textcolor{maincolor}{\textbullet}]
+		\item \textbf{Nguyên lý Bao hàm -- Nội trừ:} Phương pháp tiếp cận hiệu quả cho các bài toán đếm biến cố đối, xử lý cấu hình trùng lặp.
+		
+		\item \textbf{Kỹ thuật Sắp xếp vị trí \& Vách ngăn:} Giải pháp cho các bài toán xếp hàng, khoảng cách và điều kiện không kề nhau.
+		
+		\item \textbf{Bài toán Chia kẹo Euler:} Ứng dụng mô hình vách ngăn giải quyết bài toán chia đồ vật giống nhau và phương trình nghiệm nguyên.
+		
+		\item \textbf{Kỹ năng Phân tập trong bài toán đếm:} Sử dụng tư duy phân tập đồng dư và lũy thừa để tối ưu hóa quá trình liệt kê.
+		
+		\item \textbf{Kỹ năng triển khai Xác suất Bernoulli:} Áp dụng mô hình chuỗi phép thử độc lập cho các bài toán xác suất lặp.
+		
+		\item \textbf{Phương pháp Quy hoạch động:} Tư duy chia nhỏ bài toán và thiết lập công thức truy hồi cho các mô hình chuyển trạng thái phức tạp (Bài toán cầu thang, con bọ di chuyển, chuỗi ký tự).
+	\end{itemize}
+	
+	\vspace{0.3cm}
+	
+	\indent Thông qua hệ thống ví dụ minh họa chi tiết, phân tích bản chất sai lầm thường gặp và bài tập tự luyện đa dạng, tài liệu kỳ vọng sẽ là người bạn đồng hành tin cậy, giúp các em học sinh tự tin chinh phục các bài toán Tổ hợp -- Xác suất nâng cao.
+	
+	\newpage
+	
+	% ==================== PHẦN MỞ ĐẦU ====================
+	\phantomsection
+	\addcontentsline{toc}{section}{PHẦN MỞ ĐẦU}
+	\section*{PHẦN MỞ ĐẦU}
+	
+	\begin{tcolorbox}[colback=headerbg, colframe=maincolor, arc=3mm, boxrule=1.5pt, halign=center]
+		\textbf{\LARGE PHẦN MỞ ĐẦU}
+	\end{tcolorbox}
+	
+	\vspace{0.5cm}
+	
+	% -------------------- 1. LÝ DO CHỌN ĐỀ TÀI --------------------
+	% Dùng \subsection* để tạo mục con cấp 2 thuộc "PHẦN MỞ ĐẦU"
+	\phantomsection
+	\addcontentsline{toc}{subsection}{1. Lý do chọn đề tài}
+	\subsection*{1. Lý do chọn đề tài}
+	
+	\indent Trong chương trình Môn Toán mới, Tổ hợp và Xác suất là mảng kiến thức trọng tâm giúp phát triển tư duy logic và năng lực giải quyết vấn đề. Đây cũng là phân môn chiếm tỷ trọng phân loại cao trong các kỳ thi Học sinh giỏi và Tốt nghiệp THPT.
+	
+	\indent Học sinh thường gặp nhiều lúng túng ở các bài toán vận dụng cao do dễ mắc sai lầm đếm trùng, đếm thiếu, nhầm lẫn giữa đối tượng phân biệt và không phân biệt, hoặc bị sa lầy vào việc chia quá nhiều trường hợp thủ công.
+	
+	\indent Nhằm khắc phục các hạn chế trên, việc trang bị các phương pháp và kỹ thuật chuyên sâu là rất cần thiết:
+	
+	\begin{itemize}[leftmargin=*, label=\textcolor{blue}{\textbullet}]
+		\item \textbf{Bao hàm -- Nội trừ:} Xử lý triệt để biến cố đối và đếm trùng.
+		
+		\item \textbf{Vách ngăn \& Chia kẹo Euler:} Giải quyết các bài toán đếm nghiệm nguyên và phân chia đồ vật.
+		
+		\item \textbf{Phân tập đồng dư/lũy thừa:} Tối ưu hóa các bài toán tính tổng/tích chia hết.
+		
+		\item \textbf{Xác suất Bernoulli:} Xử lý chính xác các chuỗi phép thử lặp.
+		
+		\item \textbf{Quy hoạch động:} Thiết lập công thức truy hồi cho các bài toán chuyển trạng thái phức tạp.
+	\end{itemize}
+	
+	\indent Đề tài được hoàn thiện nhằm cung cấp nguồn tài liệu hệ thống cho học sinh tự học, đồng thời hỗ trợ giáo viên trong công tác bồi dưỡng học sinh giỏi và xây dựng ma trận đề thi.
+	
+	% -------------------- 2. MỤC ĐÍCH VÀ NHIỆM VỤ NGHIÊN CỨU --------------------
+	\phantomsection
+	\addcontentsline{toc}{subsection}{2. Mục đích và nhiệm vụ nghiên cứu}
+	\subsection*{2. Mục đích và nhiệm vụ nghiên cứu}
+	
+	\phantomsection
+	\addcontentsline{toc}{subsubsection}{2.1. Mục đích nghiên cứu}
+	\subsubsection*{2.1. Mục đích nghiên cứu}
+	Đề tài nhằm hệ thống hóa các phương pháp và kỹ thuật giải toán chuyên sâu trong mảng Đại số tổ hợp và Xác suất; xây dựng hệ thống ví dụ minh họa, phân tích sai bài  toán và bài tập phân loại theo chủ đề. Qua đó, tài liệu giúp học sinh hình thành tư duy toán học mạch lạc, nâng cao kỹ năng giải toán vận dụng cao và hỗ trợ hiệu quả cho công tác giảng dạy, ôn thi Học sinh giỏi cũng như Tốt nghiệp THPT.
+	
+	\phantomsection
+	\addcontentsline{toc}{subsubsection}{2.2. Nhiệm vụ nghiên cứu}
+	\subsubsection*{2.2. Nhiệm vụ nghiên cứu}
+	Để đạt được mục đích trên, đề tài thực hiện các nhiệm vụ cụ thể sau:
+	\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*]
+		\item \textbf{Nghiên cứu cơ sở lý thuyết và hệ thống hóa phương pháp:}
+		\begin{itemize}
+			\item Hệ thống lý thuyết nền tảng và mở rộng về Nguyên lý Bao hàm -- Nội trừ, Phương pháp Vách ngăn, Bài toán Chia kẹo Euler, Phân tập đồng dư/lũy thừa, Xác suất Bernoulli và Phương pháp Quy hoạch động trong Tổ hợp.
+			\item Xây dựng quy trình tư duy và thuật toán giải cho từng dạng toán cụ thể.
+		\end{itemize}
+		
+		\item \textbf{Xây dựng hệ thống bài tập và phân tích lời giải:}
+		\begin{itemize}
+			\item Phân tích và tuyển chọn các ví dụ minh họa điển hình, có tính phân loại cao cho 6 chủ đề trọng tâm.
+			\item Chỉ ra các lỗi sai phổ biến của học sinh (đếm trùng, đếm thiếu, nhầm lẫn bản chất đối tượng).
+			\item Đề xuất các hướng suy nghĩ, cách tiếp cận đa chiều (chia tầng bài toán, dùng biến cố đối, thiết lập công thức truy hồi).
+		\end{itemize}
+		
+		\item \textbf{Thực nghiệm và ứng dụng thực tiễn:}
+		\begin{itemize}
+			\item Đánh giá tính hiệu quả của hệ thống chuyên đề trong việc phát triển năng lực tư duy toán học cho học sinh.
+			\item Biên soạn bộ bài tập tự luyện kèm đáp số chuẩn xác, hỗ trợ giáo viên xây dựng ma trận đề kiểm tra và kế hoạch bài dạy.
+		\end{itemize}
+		\end{enumerate};			
+			% -------------------- 3. ĐỐI TƯỢNG VÀ PHẠM VI NGHIÊN CỨU 
+			\phantomsection
+			\addcontentsline{toc}{subsection}{3. Đối tượng và phạm vi nghiên cứu}
+			\subsection*{3. Đối tượng và phạm vi nghiên cứu}			
+			\phantomsection
+			\addcontentsline{toc}{subsubsection}{3.1. Đối tượng nghiên cứu}
+			\subsubsection*{3.1. Đối tượng nghiên cứu}
+			\begin{itemize}[leftmargin=*]
+				\item \textbf{Đối tượng nội dung:} Các phương pháp, kỹ thuật giải toán chuyên sâu và các dạng bài tập vận dụng -- vận dụng cao thuộc mảng Đại số tổ hợp và Xác suất trong chương trình Toán phổ thông và các kỳ thi Học sinh giỏi.
+				\item \textbf{Đối tượng thực nghiệm:} Quá trình tư duy, các khó khăn và sai lầm thường gặp của học sinh THPT khi giải các bài toán Tổ hợp -- Xác suất phức tạp.
+			\end{itemize}			
+			\phantomsection
+			\addcontentsline{toc}{subsubsection}{3.2. Phạm vi nghiên cứu}
+			\subsubsection*{3.2. Phạm vi nghiên cứu}
+			\begin{itemize}[leftmargin=*]
+				\item \textbf{Phạm vi kiến thức:} Tập trung khai thác sâu 6 chủ đề trọng tâm trong nội dung Đại số tổ hợp và Xác suất:
+				\begin{enumerate}[label=\arabic*.]
+					\item Nguyên lý Bao hàm -- Nội trừ (phân tích biến cố bù, đếm trùng, biến cố hợp).
+					\item Kỹ thuật Sắp xếp vị trí \& Vách ngăn (bài toán kề nhau, không kề nhau, khoảng cách giữa các đối tượng).
+					\item Bài toán Chia kẹo Euler (bài toán phân chia đối tượng đồng chất và phương trình nghiệm nguyên).
+					\item Kỹ năng Phân tập (phân tập đồng dư, phân tập lũy thừa trong bài toán chọn số chia hết).
+					\item Kỹ năng triển khai Xác suất Bernoulli (chuỗi phép thử lặp độc lập).
+					\item Phương pháp Quy hoạch động (chia nhỏ bài toán, mô hình chuyển trạng thái, bài toán cầu thang, con bọ di chuyển, chuỗi ký tự).
+				\end{enumerate}
+				\item \textbf{Phạm vi ứng dụng:}
+				\begin{itemize}
+					\item Phục vụ công tác bồi dưỡng Học sinh giỏi môn Toán cấp Tỉnh/Thành phố và kì thi Tốt nghiệp THPT Quốc Gia.
+					\item Định hướng ôn thi bài toán Tổ hợp -- Xác suất vận dụng cao trong Kỳ thi Tốt nghiệp THPT theo Chương trình GDPT 2018.
+					\item Làm tài liệu tham khảo cho giáo viên trong việc thiết kế kế hoạch bài dạy, xây dựng ma trận và bản đặc tả đề kiểm tra.
+				\end{itemize}
+			\end{itemize}
+	\newpage
+	\phantomsection
+	\addcontentsline{toc}{section}{CHỦ ĐỀ 1. NGUYÊN LÍ BAO HÀM NGOẠI TRỪ}
+	\section*{Chủ đề 1}\label{sec:chu-e-1}
+		\begin{tcolorbox}[colback=headerbg, colframe=headerborder, arc=3mm, boxrule=1.5pt, halign=center]
+		\textbf{\Large CHỦ ĐỀ 1.\ NGUYÊN LÍ BAO HÀM NỘI TRỪ}
+	\end{tcolorbox}	
+	\vspace{0.5cm}
+	
+	\noindent\fbox{
+		\parbox{0.96\textwidth}{
+			\textbf{\color{blue}$\boldsymbol{\otimes}$ Ví dụ 1:} Chọn ngẫu nhiên một vé xổ số có 5 chữ số từ 0 đến 9. Tính xác suất để số trên vé không có chữ số 1 hoặc không có chữ số 5.
+		}
+	}	
+	\vspace{0.3cm}	
+	
+	\noindent{\color{myred}\bfseries PHÂN TÍCH}
+	\begin{itemize}[leftmargin=*]
+		\item Trên vé không có chữ số 1 hoặc không có chữ số 5, nghĩa là không thể số 1 và số 5 cùng xuất hiện trên vé. Ngoài ra tất cả các trường hợp còn lại đều thỏa mãn.
+		\item Cần phân biệt với giả thiết: "Trên vé không có chữ số 1 và không có chữ số 5", nghĩa là bắt buộc cả 1 và 5 đều không được xuất hiện, biến cố này đếm dễ hơn rất nhiều.
+	\end{itemize}		
+	
+	\noindent{\color{myred}\bfseries LỜI GIẢI}
+	\vspace{0.2cm}
+	\noindent\textbf{Bước 1. Đếm số phần tử của không gian mẫu}
+	\begin{itemize}[leftmargin=*]
+		\item Một vé số có 5 chữ số khác với 1 số tự nhiên có 5 chữ số ở chỗ: với vé số thì số đầu tiên có thể bằng 0.
+		\item Với một vé số, ta có 5 vị trí đặt các số từ 0 đến 9, mỗi vị trí có 10 cách lựa chọn số nên số phần tử của không gian mẫu là $n(\Omega) = 10^5$.
+	\end{itemize}	
+	\noindent\textbf{Bước 2. Đếm số trường hợp thỏa mãn}
+	\begin{itemize}[leftmargin=*]
+		\item Gọi $A$ là biến cố ``số trên vé không có chữ số 1 hoặc không có chữ số 5'';\\
+		$B$ là biến cố ``số trên vé không có chữ số 1'';\\
+		$C$ là biến cố ``số trên vé không có chữ số 5''.
+		\item Khi đó $A = B \cup C \Rightarrow n(A) = n(B \cup C) = n(B) + n(C) - n(B \cap C)$
+		\item Với $n(B)$, trên vé không có chữ số 1 nên trên vé chỉ có các chữ số $0; 2; 3; \ldots; 9$. Mỗi vị trí có 9 sự lựa chọn chữ số nên $n(B) = 9^5$. Tương tự $n(C) = 9^5$.
+		\item Với $n(B \cap C)$, trên vé không có chữ số 1 và chữ số 5 nên chỉ có các chữ số $0; 2; 3; 4; 6; 7; 8; 9$, mỗi vị trí có 8 sự lựa chọn số nên $n(B \cap C) = 8^5$.
+		\item Vậy $n(A) = n(B) + n(C) - n(B \cap C) = 9^5 + 9^5 - 8^5$.
+	\end{itemize}
+	\noindent\textbf{Bước 3. Tính xác suất và kết luận:}
+	\[
+	P(A) = \frac{n(A)}{n(\Omega)} = \frac{9^5 + 9^5 - 8^5}{10^5} = \boxed{0{,}8533}
+	\]	
+	\vspace{0.3cm}
+	\noindent{\color{myred}\bfseries LƯU Ý}
+	\noindent Hãy phân tích lời giải này và suy nghĩ tại sao lời giải này lại sai:
+	\noindent Ta có: $\bar{A}$: ``Số trên vé có cả chữ số 1 và chữ số 5''.
+	\[
+	X \; X \; X \; X \; X
+	\]
+	Chọn 1 vị trí điền số $1 \rightarrow$ có 5 cách chọn; chọn tiếp 1 vị trí điền số $5 \rightarrow$ có 4 cách chọn.	
+	\noindent 3 vị trí còn lại, mỗi vị trí có 10 cách chọn, nên có tất cả $5 \cdot 4 \cdot 10^3$ cách chọn số.
+	\noindent Xác suất cần tìm:
+	\[
+	P = 1 - \frac{5 \cdot 4 \cdot 10^3}{10^5} = 1 - \frac{1}{5} = \frac{4}{5}
+	\]
+	\vspace{0.5cm}
+	\noindent\fbox{
+		\parbox{0.96\textwidth}{
+			\textbf{\color{blue}$\boldsymbol{\otimes}$ Ví dụ 2:} Một hộp đựng 12 tấm thẻ được đánh số từ 1 đến 12. Rút ngẫu nhiên ra 3 tấm thẻ. Tính xác suất để tích 3 số rút được từ 3 tấm thẻ là 1 số chia hết cho 6?
+		}
+	}
+	
+	\vspace{0.4cm}
+	\noindent{\color{myred}\bfseries $\diamondsuit$ PHÂN TÍCH}
+	\noindent Bài toán yêu cầu xét điều kiện ``tích của 3 số chia hết cho 6''. Thay vì nhân trực tiếp các số (rất khó kiểm soát), ta cần phân tích số 6 thành thừa số nguyên tố: $6 = 2 \times 3$.
+	\noindent Do đó, tích chia hết cho 6 khi và chỉ khi trong 3 số rút được có ít nhất một số chẵn (cung cấp thừa số 2) và có ít nhất một số chia hết cho 3 (cung cấp thừa số 3).
+	\noindent Cách làm hiệu quả là không đếm trực tiếp biến cố cần tìm, mà xét biến cố đối: tích không chia hết cho 6. Khi đó, tích không chia hết cho 6 xảy ra nếu thiếu thừa số 2 (cả 3 số đều lẻ) hoặc thiếu thừa số 3 (cả 3 số đều không chia hết cho 3). Ta đếm hai trường hợp này và dùng nguyên lý bù -- trừ để tránh đếm trùng. Cuối cùng, lấy tổng số cách trừ đi số trường hợp ``không thỏa mãn'' sẽ thu được số trường hợp thỏa mãn yêu cầu bài toán.
+	\vspace{0.3cm}
+	\noindent{\color{myred}\bfseries $\Rightarrow$ LỜI GIẢI}
+	\vspace{0.2cm}
+	\noindent Không gian mẫu: $n(\Omega) = C_{12}^3 = 220$.
+	\noindent Số phần tử thuộc không gian mẫu là $C_{12}^3 = 220$.
+	\noindent Gọi $E$ là biến cố ``tích 3 số rút được từ 3 tấm thẻ là 1 số chia hết cho 6''.
+	\noindent Khi đó $\bar{E}$ là biến cố ``tích 3 số rút được từ 3 tấm thẻ là 1 số không chia hết cho 6''.
+	\noindent Ta chia tập hợp $\{1; 2; \ldots; 12\}$ thành ba tập hợp
+	\begin{itemize}[leftmargin=*]
+		\item $A$ là tập hợp các số chia hết cho 6, có $A = \{6; 12\}$.
+		\item $B$ là tập hợp các số chia hết cho 2, nhưng không chia hết cho 6, có $B = \{2; 4; 8; 10\}$.
+		\item $C$ là tập hợp các số chia hết cho 3, nhưng không chia hết cho 6, có $C = \{3; 9\}$.
+		\item $D$ là tập hợp các số còn lại, có $D = \{1; 5; 7; 11\}$.
+	\end{itemize}
+	
+	\noindent Khi đó, số trên các thẻ được rút ra không thể thuộc tập $A$ và không thể đồng thời cả $B$ và $C$.
+	\begin{itemize}[leftmargin=*]
+		\item \textbf{Trường hợp 1:} Số trên các thẻ thuộc tập $B$ hoặc $D \Rightarrow C_8^3 = 56$.
+		\item \textbf{Trường hợp 2:} Số trên các thẻ thuộc tập $C$ hoặc $D \Rightarrow C_6^3 = 20$.
+	\end{itemize}
+	\begin{itemize}[leftmargin=*]
+		\item \textbf{Đếm trùng:} Số trên các thẻ chỉ thuộc tập $D \Rightarrow C_4^3 = 4$.
+	\end{itemize}
+	Số phần tử thuộc biến cố $\bar{E}$ là $n(\bar{E}) = 56 + 20 - 4 = 72$.
+	\[
+	\Rightarrow P(\bar{B}) = \frac{n(\bar{E})}{n(\Omega)} = \frac{72}{220} = \frac{18}{55}
+	\]
+	\[
+	\Rightarrow P(B) = 1 - P(\bar{B}) = 1 - \frac{18}{55} = \boxed{\frac{37}{55}}
+	\]
+	
+	\vspace{0.4cm}
+	\noindent\fbox{
+		\parbox{0.96\textwidth}{
+			\textbf{\color{blue}$\boldsymbol{\otimes}$ Ví dụ 3:} Có 6 bạn xếp ngẫu nhiên thành một hàng ngang, trong đó có 2 bạn mặc áo màu xanh, 2 bạn mặc áo màu vàng và 2 bạn mặc áo màu đỏ. Có bao nhiêu cách xếp mà 2 bạn mặc áo cùng màu không xếp cạnh nhau?
+		}
+	}
+	
+	\vspace{0.4cm}
+	\noindent{\color{myred}\bfseries $\diamondsuit$ PHÂN TÍCH}
+	\noindent Bài toán yêu cầu sắp xếp 6 bạn gồm 3 màu áo (mỗi màu 2 bạn) sao cho không có hai bạn cùng màu đứng cạnh nhau. Đây là bài đếm khó vì:
+	\begin{itemize}[leftmargin=*]
+		\item Ba nhóm đều xuất hiện 2 lần, nên các khả năng "đứng cạnh nhau" xuất hiện nhiều chiều, dễ đếm thiếu hoặc đếm trùng
+		\item Nếu đếm trực tiếp các cách thỏa mãn, các trường hợp phân nhánh rất nhanh $\rightarrow$ rất dễ rối và nhầm
+		\item Một lỗi phổ biến là ta coi các bạn cùng màu là "giống hệt", nhưng lại quên nhân thêm số cách gán từng bạn cụ thể vào vị trí màu. Hoặc ngược lại: coi tất cả 6 bạn là phân biệt rồi cố đếm điều kiện --- dẫn tới rất phức tạp.
+	\end{itemize}
+	\noindent Để xử lý gọn bài này, ta nên tách bài toán thành hai tầng:
+	\begin{itemize}[leftmargin=*]
+		\item \textbf{Tầng 1:} Chỉ xét chuỗi màu áo (coi hai bạn cùng màu là giống nhau)
+		\item \textbf{Tầng 2:} Sau khi có chuỗi màu hợp lệ, ta gán từng bạn cụ thể vào đúng màu áo
+	\end{itemize}
+	\noindent Tầng 1 giúp bài toán trở nên đơn giản và kiểm soát được các trường hợp, còn tầng 2 chỉ việc nhân hệ số hoán vị nhỏ.
+	
+	\vspace{0.3cm}
+	\noindent{\color{myred}\bfseries $\Rightarrow$ LỜI GIẢI}
+	\vspace{0.2cm}
+	\noindent Trước hết ta chỉ xét theo màu áo (coi 2 áo cùng màu là giống nhau), ta có số cách xếp là số cách hoán vị của $\{D, D, X, X, V, V\}$. Số cách xếp:
+	\[
+	N = \frac{6!}{2! \cdot 2! \cdot 2!} = 90
+	\]
+	Ta dùng nguyên lý bù trừ để đếm hai màu giống nhau đứng cạnh nhau.
+	
+	\noindent Gọi $A$: ``Có hai màu xanh cạnh nhau''; $B$: ``Có hai màu vàng cạnh nhau''; $C$: ``Có hai màu đỏ cạnh nhau''.
+	
+	\noindent Tính $n(A)$:
+	\begin{itemize}[leftmargin=*]
+		\item Ghép $XX$ thành một khối, khi đó ta xếp $XX; D; D; V; V$ (5 vị trí, trong đó có 2 vị trí $D$ giống nhau và 2 vị trí $V$ giống nhau), nên $n(A) = \dfrac{5!}{2! \cdot 2!} = 30$ (cách xếp).
+		\item Tương tự: $n(B) = n(C) = 30$.
+	\end{itemize}
+	
+	\noindent Tính $n(A \cap B)$:
+	\begin{itemize}[leftmargin=*]
+		\item Ghép $XX$ và $VV$ thành một khối, ta xếp $XX; VV; D; D$ (4 vị trí, trong đó có 2 vị trí $D$ giống nhau), nên $n(A \cap B) = \dfrac{4!}{2!} = 12$.
+		\item Tương tự, $n(B \cap C) = n(C \cap A) = 12$.
+	\end{itemize}
+	
+	\noindent Tính $n(ABC)$:
+	\begin{itemize}[leftmargin=*]
+		\item Ba khối $XX, VV, DD$ có $3!$ cách xếp.
+	\end{itemize}
+	
+	\noindent Áp dụng nguyên lý bù trừ:
+	\[
+	n(A \cup B \cup C) = n(A) + n(B) + n(C) - n(AB) - n(BC) - n(CA) + n(ABC) = 60
+	\]
+	Do đó số chuỗi màu thỏa mãn điều kiện là: $90 - 60 = 30$.
+	
+	\noindent Với mỗi chuỗi màu cụ thể, ta gán 2 bạn màu xanh vào 2 vị trí, có $2!$ cách, gán 2 bạn màu đỏ vào 2 vị trí, có $2!$ cách và 2 bạn màu vàng vào 2 vị trí, có $2!$ cách, nên mỗi chuỗi màu có 8 cách gán.
+	
+	\noindent Vậy số cách xếp là $30 \cdot 8 = 240$ (cách).
+	\begin{enumerate}[label=\bfseries\color{mymagenta}\arabic*., leftmargin=*]
+		\setcounter{enumi}{0}
+		\item Lấy ngẫu nhiên một số nguyên dương nhỏ hơn 2024. Xác suất để lấy được số chia cho 3 dư 2 hoặc chia cho 4 dư 1 bằng
+	
+			\textbf{A.} $\dfrac{674}{2023}$. \qquad\qquad
+			\textbf{B.} $\dfrac{1180}{2023}$. \qquad\qquad
+			\textbf{C.} $\dfrac{1011}{2023}$. \qquad\qquad
+			\textbf{D.} $\dfrac{169}{2023}$.
+	
+		
+		\vspace{0.3cm}
+		
+		\item Cho tập $X = \{1; 2; 3; 4; \dots; 100\}$. Chọn ngẫu nhiên một số từ tập $X$. Tính xác suất để số chọn được chia hết cho 3 hoặc chia hết cho 7.
+	
+			\textbf{A.} $\dfrac{43}{100}$. \qquad\qquad
+			\textbf{B.} $\dfrac{33}{100}$. \qquad\qquad
+			\textbf{C.} $\dfrac{47}{100}$. \qquad\qquad
+			\textbf{D.} $\dfrac{7}{50}$.
+	
+		
+		\vspace{0.3cm}
+		
+		\item Có một túi chứa 3 quả bóng, trên mỗi quả bóng được ghi một số là 1, 2, 3 (mỗi số một quả). Thí nghiệm: rút ngẫu nhiên 1 quả bóng từ túi, ghi lại số trên bóng rồi bỏ vào lại. Lặp lại thí nghiệm này 5 lần, ta được 5 số. Xác suất để tích của 5 số này chia hết cho 6 là $\dfrac{p}{q}$, với $p, q$ là hai số tự nhiên nguyên tố cùng nhau. Hãy tính $p + q$.
+		
+		\noindent{\color{myred}$\boldsymbol{\Rightarrow}$ \textbf{Đáp số:}} \dots\dots\dots\dots
+		
+		\vspace{0.3cm}
+		
+		\item Có 2 dãy ghế đối diện nhau, mỗi dãy có 5 ghế. Xếp ngẫu nhiên 10 học sinh đến từ 7 lớp, trong đó có 2 bạn đến từ lớp 12A, 3 bạn đến từ lớp 12B, 5 bạn còn lại đến từ các lớp khác nhau vào hai dãy ghế trên. Tính xác suất để không có học sinh nào cùng lớp ngồi đối diện nhau.
+		
+		\noindent{\color{myred}$\boldsymbol{\Rightarrow}$ \textbf{Đáp số:}} \dots\dots\dots\dots
+		
+		\vspace{0.3cm}
+		
+		\item Trong cuộc gặp mặt dặn dò trước khi lên đường tham gia kì thi học sinh giỏi, có 10 bạn trong đội tuyển gồm 2 bạn đến từ lớp 12 A, 3 bạn từ lớp 12 B, 5 bạn còn lại đến từ 5 lớp khác (mỗi lớp một bạn). Thầy giáo xếp ngẫu nhiên các bạn kể trên ngồi vào một bàn dài có 10 ghế mà mỗi bên có 5 ghế xếp đối diện nhau. Tính xác suất để không có học sinh nào cùng lớp ngồi đối diện nhau (làm tròn kết quả đến hàng phần chục).
+		
+		\vspace{0.3cm}
+		
+		\item Cơn bão YAGI đã gây ra những thiệt hại lớn cho các tỉnh phía Bắc, nhiều tổ chức và cá nhân đã tổ chức các đợt cứu trợ khẩn cấp cho người dân vùng bị ảnh hưởng. Trong đó, xã X đã điều động 3 xe (xe số 1, 2 và 3) vừa chở hàng hóa vừa chở người. Để phối hợp vận chuyển hàng cứu trợ, 10 tình nguyện viên sẽ được chọn để tham gia vào các chuyến xe này. Mỗi xe có thể chở hết 10 tình nguyện viên và những người này được phân bố lần lượt lên 3 chiếc xe một cách ngẫu nhiên.
+		\begin{enumerate}[label=\alph*)]
+			\item Không gian mẫu của phép thử có số phần tử là $3^{10}$.
+			\item Số cách lên xe sao cho xe số 1 không có tình nguyện viên nào là $2^{10}$.
+			\item Số cách lên xe sao cho chỉ có xe số 3 không có tình nguyện viên nào là $2^{10} - 1$.
+			\item Xác suất để xe nào cũng có tình nguyện viên là $\dfrac{6220}{6561}$.
+		\end{enumerate}
+		
+		\vspace{0.3cm}
+		
+		\item Arnold đang nghiên cứu về tỷ lệ phổ biến của ba yếu tố nguy cơ sức khỏe, ký hiệu là $A, B$ và $C$, trong một quần thể nam giới. Với mỗi yếu tố trong ba yếu tố đó, xác suất để một người đàn ông được chọn ngẫu nhiên từ quần thể chỉ mắc đúng yếu tố nguy cơ này (và không mắc các yếu tố còn lại) là 0,1. Với bất kỳ hai yếu tố nào trong ba yếu tố, xác suất để một người đàn ông được chọn ngẫu nhiên mắc chính xác hai yếu tố đó (nhưng không mắc yếu tố thứ ba) là 0,14. Xác suất để một người đàn ông mắc cả ba yếu tố nguy cơ, biết rằng người đó đã mắc $A$ và $B$, là $\dfrac{1}{3}$. Xác suất để một người đàn ông không mắc yếu tố nguy cơ nào trong cả ba loại, biết rằng người đó không mắc yếu tố nguy cơ $A$, là $\dfrac{p}{q}$, trong đó $p$ và $q$ là các số nguyên dương nguyên tố cùng nhau. Hãy tính $p + q$.
+		
+		\noindent{\color{myred}$\boldsymbol{\Rightarrow}$ \textbf{Đáp số:}} \dots\dots\dots\dots
+	\end{enumerate}
+	
+	% Chuyển sang trang mới
+	\clearpage
+	\phantomsection
+	\addcontentsline{toc}{section}{CHỦ ĐỀ 2. SẮP XẾP VỊ TRÍ - VÁCH NGĂN}
+	 \section*{Chủ đề 2}
+\begin{tcolorbox}[colback=headerbg, colframe=headerborder, arc=3mm, boxrule=1.5pt, halign=center]
+	\textbf{\Large CHỦ ĐỀ 2.\ SẮP XẾP VỊ TRÍ - VÁCH NGĂN}
+\end{tcolorbox}
+	\vspace{0.5cm}
+	
+	\noindent{\color{mymagenta}\bfseries VÍ DỤ MINH HỌA}
+	
+	\vspace{0.2cm}
+	
+	\noindent\fbox{
+		\parbox{0.96\textwidth}{
+				\textbf{\color{blue}$\boldsymbol{\otimes}$ Ví dụ 1:} Có 6 bạn xếp ngẫu nhiên thành một hàng ngang, trong đó có 1 bạn mặc áo màu xanh, 2 bạn mặc áo màu vàng và 3 bạn mặc áo màu đỏ. Tính xác suất để hai bạn mặc áo cùng màu không xếp cạnh nhau?
+		}
+	}
+	
+	\vspace{0.3cm}
+	
+	\noindent{\color{myred}\bfseries $\diamondsuit$ PHÂN TÍCH}
+	
+	\noindent Trong bài toán này, điều quan trọng là ta chỉ quan tâm xem các màu áo có đứng cạnh nhau hay không, chứ không cần phân biệt từng bạn cụ thể. Vì vậy, mọi cách sắp xếp 6 bạn phân biệt đều được "gom" lại thành một cách sắp xếp màu áo tương ứng. Cụ thể, với mỗi cách sắp xếp màu áo (ví dụ: Đ -- V -- Đ -- X -- V -- Đ), ta có đúng $3! \cdot 2! \cdot 1! = 12$ cách gán 6 bạn phân biệt vào đó. Khi tính tỉ lệ (xác suất), các hệ số nhân này triệt tiêu, nên ta có thể hoàn toàn làm việc trên các chuỗi màu giống nhau --- giúp bài toán nhẹ nhàng và trực quan hơn.
+	
+	\noindent Khó khăn lớn nhất với chúng ta khi gặp bài này là đếm nhầm số cách xếp không kề nhau, chẳng hạn: Xét từng vị trí cho các trường hợp nhưng không loại trừ các trường hợp hai V đứng cạnh nhau, hoặc không kiểm soát được các cấu hình bị trùng.
+	
+	\noindent Một hướng suy nghĩ hiệu quả là:
+	\begin{itemize}[leftmargin=*]
+		\item Xếp màu xuất hiện nhiều nhất trước (ở đây là 3 màu đỏ) sao cho chúng không kề nhau
+		\item Liệt kê các vị trí trống và đặt 2 áo vàng vào sao cho chúng không đứng cạnh nhau
+		\item Cuối cùng đặt áo xanh vào vị trí còn lại
+	\end{itemize}
+	\noindent Cách tiếp cận này tránh được đếm trùng và giúp ta quan sát rõ cấu trúc của dãy, từ đó đếm các trường hợp hợp lệ một cách chắc chắn.
+	
+	\vspace{0.3cm}
+	
+	\noindent{\color{myred}\bfseries $\Rightarrow$ LỜI GIẢI}
+	
+	\vspace{0.2cm}
+	
+	\noindent Nếu chỉ quan tâm tới màu áo (không quan tâm tới tính phân biệt của từng bạn) thì số cách xếp 6 chỗ là: $\dfrac{6!}{3! \cdot 2!} = 60$ (cách).
+	
+	\noindent Mỗi cách xếp màu tương ứng với $3! \cdot 2! = 12$ cách xếp 6 bạn phân biệt, nên khi tính xác suất, ta chỉ cần làm việc trên các mẫu xếp màu.
+	
+	\noindent Ta xếp trước 3 bạn áo đỏ sao cho không có 2 bạn nào kề nhau, ta có các trường hợp:
+	
+	\vspace{0.2cm}
+	
+	\noindent\textbf{Trường hợp 1:} Đ $\square$ Đ $\square$ Đ $\square$. Đặt V, V, X vào 3 vị trí trống, có $\dfrac{3!}{2!} = 3$ cách.
+	
+	\vspace{0.2cm}
+	
+	\noindent\textbf{Trường hợp 2:} $\square$ Đ $\square$ Đ $\square$ Đ. Đặt V, V, X vào 3 vị trí trống, có $\dfrac{3!}{2!} = 3$ cách.
+	
+	\vspace{0.2cm}
+	
+	\noindent\textbf{Trường hợp 3:} Đ $\square$ $\square$ Đ $\square$ Đ. Đặt V, V, X vào 3 vị trí sao cho V, V không cạnh nhau, chỉ có 2 cách xếp.
+	
+	\vspace{0.2cm}
+	
+	\noindent\textbf{Trường hợp 4:} Đ $\square$ Đ $\square$ $\square$ Đ. Đặt V, V, X vào 3 vị trí sao cho V, V không cạnh nhau, có 2 cách xếp.
+	
+	\vspace{0.2cm}
+	
+	\noindent Vậy số cách xếp màu áo thỏa mãn là $3 + 3 + 2 + 2 = 10$ (cách).
+	
+	\noindent Xác suất cần tính: $P = \dfrac{10}{60} = \dfrac{1}{6}$.
+	
+	\vspace{0.2cm}
+	% Cấu hình lề	\geometry{top=2cm, bottom=2cm, left=2cm, right=2cm}
+			\noindent\fbox{
+			\parbox{0.96\textwidth}{
+			\textbf{\color{blue}$\boldsymbol{\otimes}$ Ví dụ 2:} Xếp ngẫu nhiên 19 học sinh gồm 15 bạn nam và 4 bạn nữ thành một hàng ngang. Tính xác suất để giữa hai bạn nữ luôn có ít nhất 3 bạn nam?
+		}
+	}
+	\vspace{0.2cm}
+		\noindent \textbf{\textcolor{red}{$\rightarrow$ LỜI GIẢI}}
+		
+		\noindent Phép thử: Xếp ngẫu nhiên 19 học sinh thành một hàng ngang, nên số phần tử của không gian mẫu là \(n(\Omega) = 19!\). Để tính số cách xếp thỏa mãn giữa hai bạn nữ luôn có ít nhất 3 bạn nam, ta thực hiện theo ba bước như sau:
+		
+		\noindent \textbf{Bước 1.} Xếp 15 bạn nam thành 1 hàng ngang, có \(15!\) cách xếp.
+		\begin{itemize}
+			\item Giữa các vị trí xếp có tất cả 16 khoảng trống (tính cả khoảng trống ở hai đầu).
+			\item Ta cần chọn ra 4 vị trí đặt các bạn nữ thỏa mãn giữa hai bạn nữ có ít nhất 3 bạn nam.
+		\end{itemize}
+		
+		\noindent \textbf{Bước 2.} Chọn 4 vị trí
+		\begin{itemize}
+			\item Giả sử 4 vị trí được đặt có số thứ tự là \(n_1, n_2, n_3, n_4\) với \(1 \le n_1 < n_2 < n_3 < n_4 \le 16\).
+			\item Để giữa hai nữ có ít nhất 3 nam thì giữa hai số \(n_1\) và \(n_2\) tồn tại ít nhất 2 số tự nhiên, do đó \(n_1 < n_2 - 2\). Tương tự \(n_2 < n_3 - 2, n_3 < n_4 - 2\).
+			\item Do đó \(1 \le n_1 < n_2 - 2 < n_3 - 4 < n_4 - 6 \le 10\).
+			\item Số cách chọn bộ \((n_1, n_2, n_3, n_4)\) bằng số cách chọn bộ \((n_1, n_2 - 2, n_3 - 4, n_4 - 6)\), bằng số cách chọn ra 4 số từ tập hợp \(\{1; 2; 3; 4; 5; 6; 7; 8; 9; 10\}\), có \(\C{10}{4}\) cách.
+		\end{itemize}
+		
+		\noindent \textbf{Bước 3.} Xếp 4 bạn nữ vào 4 vị trí chọn được
+		\begin{itemize}
+			\item Có \(4!\) cách xếp.
+		\end{itemize}
+		
+		\noindent Vậy số cách xếp thỏa mãn: \(15! \times \C{10}{4} \times 4!\)
+		
+		\noindent Xác suất cần tính:
+		\[
+		P = \frac{15! \times \C{10}{4} \times 4!}{19!} = \frac{35}{646}.
+		\]
+	
+		\vspace{0.5cm}
+		
+		
+		\begin{enumerate}[label=\textbf{\arabic*.}]
+			\item Có bao nhiêu cách xếp 8 người ngồi trên một hàng ghế nếu:
+			\begin{enumerate}[label=\alph*)]
+				\item Không có điều kiện ràng buộc nào về cách sắp xếp chỗ ngồi?
+				\item Hai người \(A\) và \(B\) phải ngồi cạnh nhau?
+				\item Có 4 nam và 4 nữ, và không có hai người nào cùng giới tính được ngồi cạnh nhau?
+				\item Có đúng 5 người là nam, và 5 người này phải ngồi cạnh nhau?
+				\item Có 4 cặp vợ chồng, và mỗi cặp vợ chồng phải ngồi cạnh nhau?
+			\end{enumerate}
+			
+			\item Với các chữ số \(0; 1; 2; 3; 4; 5; 6\) có thể lập được bao nhiêu số tự nhiên có 5 chữ số đôi một khác nhau và trong đó nhất thiết phải có mặt chữ số 5? \\
+			\(\Rightarrow\) \textbf{Đáp số:} .........
+			
+			\item Có 6 bi gồm 2 bi đỏ, 2 bi vàng, 2 bi xanh (các bi này đôi một khác nhau). Xếp ngẫu nhiên các viên bi thành hàng ngang, tính xác suất để hai viên bi vàng không xếp cạnh nhau?
+			
+				A. \(P = \frac{2}{3}\). \hspace{3cm} B. \(P = \frac{1}{3}\). \hspace{3cm} C. \(P = \frac{5}{6}\). \hspace{3cm} D. \(P = \frac{1}{5}\).
+		
+			
+			\item Xếp ngẫu nhiên 5 học sinh \(A, B, C, D, E\) vào một dãy 5 ghế thẳng hàng (mỗi bạn ngồi một ghế). Tính xác suất để hai bạn \(A\) và \(B\) không ngồi cạnh nhau \\
+			\(\Rightarrow\) \textbf{Đáp số:} .........
+			
+			\item Mary và James chọn chỗ ngồi ngẫu nhiên trong một hàng gồm 7 chiếc ghế. Xác suất để họ không ngồi cạnh nhau là bao nhiêu? \\
+			\(\Rightarrow\) \textbf{Đáp số:} .........
+		\end{enumerate}
+
+		\begin{enumerate}[label=\textbf{\arabic*.}, start=6]
+			\item Có 5 bạn học sinh nam và 5 bạn học sinh nữ, trong đó có một bạn nữ tên Hoa và một bạn nam tên Bình. Xếp ngẫu nhiên 10 bạn đó vào một dãy 10 ghế sao cho mỗi ghế có đúng một người. Tính xác suất để không có hai học sinh nam nào ngồi kề nhau và bạn Hoa ngồi kề với bạn Bình. \\
+			\(\Rightarrow\) \textbf{Đáp số:} .........
+			
+			\item Có 6 chiếc ghế được kê thành một hàng ngang. Xếp ngẫu nhiên 6 học sinh, gồm 3 học sinh lớp \(A\), 2 học sinh lớp \(B\) và 1 học sinh lớp \(C\) ngồi vào hàng ghế đó sao cho mỗi ghế có đúng một học sinh. Xác suất để học sinh lớp \(C\) không ngồi cạnh học sinh lớp \(B\) bằng
+		
+				A. \(\frac{1}{5}\). \hspace{3cm} B. \(\frac{4}{5}\). \hspace{3cm} C. \(\frac{2}{15}\). \hspace{3cm} D. \(\frac{2}{5}\).
+			
+			
+			\item Có hai dãy ghế, mỗi dãy có 9 ghế, trong đó có 1 dãy hướng về phía Nam và 1 dãy hướng về phía Bắc. Có 18 vị khách ngồi vào hai dãy ghế trên, trong đó 4 vị khách muốn ngồi dãy hướng về phía Nam và 3 vị khách muốn ngồi ở phía còn lại. Số cách sắp xếp là:
+			
+				A. \(\C{11}{4} \cdot (9!)^2\). \hspace{2.5cm} B. \(\C{11}{3} \cdot (9!)^2\). \hspace{2.5cm} C. \(7 \cdot (9!)^2\). \hspace{2.5cm} D. \(7 \cdot (9!)^2\).
+		
+
+			
+			\item Bạn Thuận có một danh sách gồm 6 bài hát khác nhau, các bài hát được phát theo thứ tự từ trên xuống. Lần đầu, khi nghe xong bài hát thứ ba trong danh sách, bạn ấy xáo trộn ngẫu nhiên danh sách phát của mình và sau đó nghe 3 bài hát đầu tiên trong danh sách mới. Tính xác suất để bạn Thuận nghe đủ 6 bài hát khác nhau sau hai lần nghe. \\
+			\(\Rightarrow\) \textbf{Đáp số:} .........
+			
+			\item Có ba cặp vợ chồng ngồi ngẫu nhiên vào hai dãy ghế đối diện nhau, mỗi dãy có 3 ghế. Tính xác suất để:
+			\begin{enumerate}[label=\alph*)]
+				\item Mỗi cặp vợ chồng đều ngồi đối diện nhau.
+				\item Không có cặp vợ chồng nào ngồi đối diện nhau.
+			\end{enumerate}
+			\(\Rightarrow\) \textbf{Đáp số:} .........
+		\end{enumerate}
+			\newpage
+
+		% ==================== TIÊU ĐỀ ====================
+		\phantomsection
+		\addcontentsline{toc}{section}{CHỦ ĐỀ 3. BÀI TOÁN CHIA KẸO EULER}
+		\section*{Chủ đề 3}
+		\begin{tcolorbox}[colback=headerbg, colframe=headerborder, arc=3mm, boxrule=1.5pt, halign=center]
+			\textbf{\Large CHỦ ĐỀ 3.\ BÀI TOÁN CHIA KẸO EULER}
+		\end{tcolorbox}
+		
+		\vspace{0.5cm}
+		\noindent\fbox{
+		\parbox{0.96\textwidth}{
+		\textbf{\color{blue}$\boldsymbol{\otimes}$ Ví dụ 1:} Hỏi có tất cả bao nhiêu cách chia 5 chiếc kẹo giống nhau cho 3 em bé sao cho mỗi em được ít nhất một chiếc kẹo?
+		}
+		}	
+		
+		% Hình minh họa (mô phỏng bằng TikZ)
+		\begin{center}
+			\begin{tikzpicture}[scale=0.8]
+				% Vẽ các em bé (đơn giản hóa bằng hình tròn và chữ)
+				\draw[fill=orange!30] (0,0) circle (0.8);
+				\node at (0,0) {\textbf{Bé 1}};
+				\draw[fill=blue!30] (3,0) circle (0.8);
+				\node at (3,0) {\textbf{Bé 2}};
+				\draw[fill=green!30] (6,0) circle (0.8);
+				\node at (6,0) {\textbf{Bé 3}};
+				
+				% Vẽ 5 chiếc kẹo
+				\foreach \x in {0.5, 1.5, 2.5, 3.5, 4.5} {
+					\draw[fill=red!60, draw=red!80] (\x, -1.5) circle (0.2);
+					\draw[fill=white] (\x, -1.5) circle (0.1);
+				}
+				\node at (2.5, -2.2) {5 chiếc kẹo giống nhau};
+			\end{tikzpicture}
+		\end{center}
+		
+	\noindent{\color{myred}\bfseries $\Rightarrow$ LỜI GIẢI}
+		
+		\noindent Ở đây những chiếc kẹo là giống nhau, cho nên chúng ta cũng chỉ cần quan tâm tới việc xem mỗi em bé được bao nhiêu cái kẹo mà không cần quan tâm tới việc mỗi em được những chiếc kẹo như thế nào, vì đơn giản những chiếc kẹo là giống nhau rồi.
+		Mục đích của chúng ta là chia kẹo thành 3 phần, sao cho mỗi phần có ít nhất một chiếc kẹo. Công việc được hoàn thành bởi các công đoạn sau:
+		
+		\vspace{0.3cm}
+		
+		\noindent \textbf{Công đoạn 1:} Xếp 5 chiếc kẹo thành hàng ngang, có 1 cách xếp (vì các chiếc kẹo giống nhau). Sau khi xếp xong thì giữa 5 chiếc kẹo thì sẽ có \((5-1)\) khoảng trống.
+		
+		% Hình minh họa các khoảng trống
+		\begin{center}
+			\begin{tikzpicture}[scale=1]
+				% Vẽ các ô vuông và số
+				\foreach \x/\label in {0/1, 2/2, 4/3, 6/4, 8/5} {
+					\draw[thick] (\x, 0) rectangle (\x+0.8, 0.8);
+					\node at (\x+0.4, 0.4) {\textbf{\label}};
+					\node[above] at (\x+0.4, 1) {Kẹo};
+				}
+				
+				% Vẽ các khoảng trống (mũi tên)
+				\foreach \x in {0.8, 2.8, 4.8, 6.8} {
+					\draw[<->, >=stealth, thick] (\x, -0.2) -- (\x+0.4, -0.2);
+				}
+				
+				% Chú thích
+				\node[below] at (4, -0.8) {4 khoảng trống bên trong dùng để đặt 2 vách ngăn};
+			\end{tikzpicture}
+		\end{center}
+		
+		\noindent \textbf{Công đoạn 2:} Ta dùng \((3-1)\) vách ngăn giống nhau để xếp vào \((5-1)\) khoảng trống. Sẽ có \(\mathrm{C}_{5-1}^{3-1} = \mathrm{C}_4^2 = 6\) cách. Sau khi xếp các vách ngăn sẽ tạo ra 3 phần. Việc chia kẹo đã hoàn thành. Số cách chia kẹo sẽ là: \(1 \cdot \mathrm{C}_{5-1}^{3-1} = 1 \cdot \mathrm{C}_4^2 = 6\) (cách).
+		
+		\vspace{0.5cm}
+		
+		\noindent{\color{myred}\bfseries $\Rightarrow$ TỔNG QUÁT:} Khi đem \(n\) chiếc kẹo giống nhau đem chia cho \(k\) em bé, sao cho mỗi em được ít nhất một chiếc kẹo, thì số cách chia kẹo sẽ là: \(\mathrm{C}_{n-1}^{k-1}\).
+		
+		\noindent Cách giải bài toán này tương tự như giải bài toán mở đầu:
+		
+		\vspace{0.3cm}
+		
+		\noindent \textbf{Công đoạn 1:} Xếp \(n\) chiếc kẹo thành hàng ngang, có 1 cách xếp (vì các chiếc kẹo giống nhau). Sau khi xếp xong thì giữa \(n\) chiếc kẹo thì sẽ có \((n-1)\) khoảng trống.
+		
+		\vspace{0.3cm}
+		
+		\noindent \textbf{Công đoạn 2:} Ta dùng \((k-1)\) vách ngăn giống nhau để xếp vào \((n-1)\) khoảng trống. Sẽ có \(\mathrm{C}_{n-1}^{k-1}\) cách. Sau khi xếp các vách ngăn sẽ tạo ra \(k\) phần. Việc chia kẹo đã hoàn thành. Số cách chia kẹo sẽ là: \(\mathrm{C}_{n-1}^{k-1}\) (cách).
+		% Định nghĩa lệnh tạo ô trống đáp án (mô phỏng các ô vuông nhỏ)
+		\newcommand{\answerbox}[1]{%
+			\begin{tikzpicture}[baseline=(current bounding box.center), scale=0.8]
+				\foreach \i in {1,...,#1} {
+					\draw[thick, dashed, gray] (0.5*\i, 0) rectangle (0.5*\i + 0.4, 0.4);
+				}
+			\end{tikzpicture}%
+		}
+	
+	
+		\noindent{\color{myred}\bfseries HỆ QUẢ 1:} Bài toán chia kẹo Euler còn được mở rộng sang bài toán đếm số nghiệm nguyên dương của phương trình \(x_1 + x_2 + x_3 + \dots + x_k = n\), với \(n\) và \(k\) là những số nguyên dương thỏa mãn \(1 \le k \le n\). Ở đây, ta coi như có \(n\) chiếc kẹo giống nhau đem chia cho \(k\) em bé sao cho mỗi em bé được số kẹo lần lượt là \(x_1; x_2; \dots; x_k \ge 1\) thì suy ra: \(x_1 + x_2 + x_3 + \dots + x_k = n\).
+		Số cách chia kẹo cũng là số nghiệm nguyên dương cần đếm và bằng \(\mathrm{C}_{n-1}^{k-1}\).
+		
+		\vspace{0.3cm}
+		
+	\noindent{\color{myred}\bfseries HỆ QUẢ 2:} Chúng ta có thể phát triển thêm một hệ quả nữa ở dạng bài toán là: ``Hỏi có tất cả bao nhiêu cách chia \(n\) chiếc kẹo giống nhau cho \(k\) em bé, biết rằng có thể có em bé sẽ không được chiếc kẹo nào?''
+		
+		\noindent{\color{myred}\bfseries LỜI GIẢI:}
+		
+		\noindent Bây giờ ta sẽ bù thêm vào \(k\) chiếc kẹo để thành ra tổng số kẹo là \((n+k)\). \{Mục đích của ta là dùng \(k\) chiếc kẹo này chia đều cho \(k\) em bé để đảm bảo mỗi em đều được ít nhất 1 chiếc kẹo rồi\}. Bài toán trở thành: Dùng \((n+k)\) chiếc kẹo giống nhau đem chia cho \(k\) em bé, sao cho mỗi em được ít nhất một chiếc kẹo, thì số cách chia sẽ đơn giản là: \(\mathrm{C}_{n+k-1}^{k-1}\) cách.
+		
+		\vspace{0.3cm}
+		
+		\noindent{\color{myred}\bfseries HỆ QUẢ 3:} Hỏi bất phương trình \(x_1 + x_2 + \dots + x_k \le n\) có tất cả bao nhiêu nghiệm nguyên dương?
+		
+			\noindent{\color{myred}\bfseries LỜI GIẢI:}
+		
+		\noindent \(x_1 + x_2 + \dots + x_k \le n \longrightarrow (n+1) - (x_1 + x_2 + \dots + x_k) \ge 1\)
+		
+		\noindent Đặt \(x_{k+1} = (n+1) - (x_1 + x_2 + \dots + x_k) \in \mathbb{N}^* \Leftrightarrow (x_1 + x_2 + \dots + x_k + x_{k+1}) = (n+1)\).
+		
+		\noindent Số nghiệm \((x_1; x_2; \dots; x_k)\) thỏa mãn cũng là số nghiệm \((x_1; x_2; \dots; x_k; x_{k+1})\) thỏa mãn. Ta đã biết số nghiệm nguyên dương của phương trình trên là \(\mathrm{C}_{(n+1)-1}^{(k+1)-1} = \mathrm{C}_n^k\).
+		
+		\noindent Như vậy, số nghiệm nguyên dương của bất phương trình \(x_1 + x_2 + \dots + x_k \le n\) là: \(\mathrm{C}_n^k\).
+		
+		\vspace{0.5cm}
+		
+		\begin{enumerate}[label=\textbf{Câu \arabic*:}, leftmargin=*]
+				\setcounter{enumi}{0}
+			\item Hỏi có tất cả bao nhiêu cách chia 9 chiếc kẹo giống nhau cho 3 em bé sao cho mỗi em bé được ít nhất là một cái?
+			
+			% Hình minh họa (mô phỏng đơn giản)
+			\begin{center}
+				\begin{tikzpicture}[scale=0.8]
+					\draw[fill=orange!30] (0,0) circle (0.8);
+					\node at (0,0) {\textbf{Bé 1}};
+					\draw[fill=blue!30] (3,0) circle (0.8);
+					\node at (3,0) {\textbf{Bé 2}};
+					\draw[fill=green!30] (6,0) circle (0.8);
+					\node at (6,0) {\textbf{Bé 3}};
+					
+					\foreach \x in {0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5} {
+						\draw[fill=red!60, draw=red!80] (\x, -1.5) circle (0.2);
+						\draw[fill=white] (\x, -1.5) circle (0.1);
+					}
+				\end{tikzpicture}
+			\end{center}
+			\hfill \answerbox{4}
+			
+			\item Có 20 chiếc kẹo giống nhau đem chia cho 5 người sao cho mỗi người được ít nhất một cái, thì số cách chia kẹo sẽ là:
+			\hfill \answerbox{4}
+			
+			\item Hỏi có tất cả bao nhiêu cách chia 30 chiếc kẹo cho 6 em bé sao cho mỗi em bé được ít nhất 3 chiếc kẹo?
+			\hfill \answerbox{4}
+			
+			\item Hỏi có tất cả bao nhiêu cách chia 9 chiếc kẹo giống nhau cho 3 em bé sao cho có thể có em bé không được chiếc kẹo nào?
+			\hfill \answerbox{4}
+			
+			\item Cho phương trình nghiệm nguyên dương \(x + y + z = 28\). Hỏi phương trình đã cho có tất cả bao nhiêu nghiệm?
+			\hfill \answerbox{4}
+			\item Hỏi có tất cả bao nhiêu bộ \((x; y; z; t)\) nguyên thỏa mãn \(x + y + z + t = 20\) và đồng thời thỏa mãn \(x \ge 0; y \ge -2; z \ge 3; t \ge -5\)?
+			\hfill \answerbox{4}
+			
+			\item Hỏi có tất cả bao nhiêu bộ ba số nguyên dương \((x; y; z)\) thỏa mãn điều kiện \(x + y + z \le 20\)?
+			\hfill \answerbox{4}
+			
+			\item Hỏi có tất cả bao nhiêu bộ 4 số nguyên dương \((x; y; z; t)\) sao cho thỏa mãn điều kiện \(x + y + z + t < 20\)?
+			\hfill \answerbox{4}
+			
+			\item Hỏi có tất cả bao nhiêu số hạng trong khai triển \((2a + b + c)^{10}\)?
+			\hfill \answerbox{4}
+		\end{enumerate}
+		
+		
+		\clearpage
+		% ==================== TIÊU ĐỀ ====================
+		\phantomsection
+		\addcontentsline{toc}{section}{CHỦ ĐỀ 4. KĨ NĂNG PHÂN TẬP TRONG BÀI TOÁN ĐẾM}
+			\section*{Chủ đề 4}
+		\begin{tcolorbox}[colback=headerbg, colframe=headerborder, arc=3mm, boxrule=1.5pt, halign=center]
+			\textbf{\Large CHỦ ĐỀ 4.\ KĨ NĂNG PHÂN TẬP TRONG BÀI TOÁN ĐẾM}
+		\end{tcolorbox}
+		
+		\vspace{0.5cm}
+		\parbox{0.96\textwidth}{
+		\textbf{\color{blue}$\boldsymbol{\otimes}$ Ví dụ :} Hỏi từ tập \(X = [1; 50]\) có bao nhiêu cách chọn được ba số tự nhiên có tổng chia hết cho 3?
+	}
+	
+		\noindent{\color{myred}\bfseries PHÂN TÍCH}
+		
+		\noindent Gọi ba số tự nhiên được chọn là \(a, b, c\), khi đó ta có: 
+		$\begin{cases} 
+			a, b, c \in X \\ 
+			(a + b + c) \vdots 3 
+		\end{cases}$
+		
+		\noindent Vẫn biết, chúng ta có thể sẽ tư duy được ngay rằng:
+		\begin{itemize}
+			\item Để \((a + b + c)\) chia hết cho 3 thì hoặc cả ba số cùng chia hết cho 3, hoặc cả ba số cùng chia 2 dư 1, hoặc cả ba số cùng chia 3 dư 2, hoặc một số chia 2 dư 0 một số chia 3 dư 1 một số chia 3 dư 2.
+			\item Để đếm các số trong \(X\) chia hết cho 3, chia cho 3 dư 1, chia cho 3 dư 2 lại yêu cầu chúng ta phải phân chia tập \(X\) thành các tập chia hết cho 3, chia cho 3 dư 1, chia cho 3 dư 2, để đếm cho dễ.
+		\end{itemize}
+		
+		\noindent Ở đây chúng ta đã hình thành tư duy phân tập, vì mỗi tập đều chứa các số cùng số dư khi chia cho 3 nên ta gọi là \noindent{\color{mymagenta}\bfseries tư duy phân tập đồng dư.}
+		
+		\noindent Vậy ta sẽ phân tập \(X = [1; 50]\) thành ba tập đồng dư:
+		
+		\noindent Tập chia hết cho 3: \(X_0 = \{3k \mid k \in \mathbb{Z}, 1 \le 3k \le 50\} = \{3; 6; 9; \dots; 48\} \longrightarrow n(X_0) = 16\).
+		
+		\noindent Tập chia 3 dư 1: \(X_1 = \{3k + 1 \mid k \in \mathbb{Z}, 1 \le 3k + 1 \le 50\} = \{1; 4; 7; \dots; 49\} \longrightarrow n(X_1) = 17\).
+		
+		\noindent Tập chia 3 dư 2: \(X_2 = \{3k + 2 \mid k \in \mathbb{Z}, 1 \le 3k + 2 \le 50\} = \{2; 5; 8; \dots; 50\} \longrightarrow n(X_2) = 17\).
+		
+		\noindent Đến đây, ta giải quyết bài toán hết sức mạch lạc: Hoặc chọn ba số từ tập \(X_0\) hoặc chọn mỗi số từ một tập \(X_0, X_1, X_2\). Suy ra số cách chọn là: \(\C{16}{3} + \C{17}{3} + \C{17}{3} + \C{16}{1}\C{17}{1}\C{17}{1} = 6544\).
+	
+		\vspace{0.5cm}
+		
+	\noindent{\color{myred}\bfseries $\Rightarrow$ MỞ RỘNG 01:} Nếu bài toán yêu cầu chọn ra 4 số có tổng chia hết cho 3 thì chúng ta sẽ dần khó khăn trong việc nhẩm nháp tư duy, thay vào đó nếu chúng ta có thể tư duy đơn giản như sau: ``Tổng các số chia hết cho 3 khi và chỉ khi tổng số dư của chúng chia hết cho 3'', thì lúc này chúng ta chỉ việc liệt kê chuỗi 4 kí tự chỉ chứa các số dư ``0'', ``1'', ``2'' có tổng chia hết cho ba. Thật vậy, ta sẽ liệt kê chuỗi nhiều kí tự ``2'' nhất có thể rồi lùi về chuỗi nhiều kí tự ``0'' nhất có thể: 2220, 2211, 2100, 1110, 0000.
+		
+		\noindent Phổ theo 5 chuỗi liệt kê ở trên, ta phát biểu: Hoặc chọn 3 số từ tập \(X_2\) và một số từ tập \(X_0\), hoặc chọn 2 số từ tập \(X_2\) và 2 số từ tập \(X_1\), hoặc chọn 1 số từ tập \(X_2\) và 1 số từ tập \(X_1\) và 2 số từ tập \(X_0\), hoặc chọn 3 số từ tập \(X_1\) và 1 số từ tập \(X_0\), hoặc chọn 4 số từ tập \(X_0\).
+		
+		\noindent Như vậy, rõ ràng nếu ta không sử dụng việc liệt kê chuỗi số dư có tổng chia hết cho 3 mà lại cứ đi nhẩm nháp tư duy thì quá là khó khăn cồng kềnh và dễ thiếu trường hợp.
+		
+		\noindent Đặc biệt, chỉ cần nhìn vào các chuỗi liệt kê được, ta có thể viết luôn được kết quả:
+		
+		\vspace{0.3cm}
+		
+		\noindent
+		$\begin{cases}
+			2220 \longrightarrow \C{17}{3}\C{16}{1} \\
+			2211 \longrightarrow \C{17}{2}\C{17}{2} \\
+			2100 \longrightarrow \C{17}{1}\C{17}{1}\C{16}{2} \\
+			1110 \longrightarrow \C{17}{3}\C{16}{1} \\
+			0000 \longrightarrow \C{16}{4}
+		\end{cases}
+		\longrightarrow \text{có tất cả: } \C{17}{3}\C{16}{1} + \C{17}{2}\C{17}{2} + \C{17}{1}\C{17}{1}\C{16}{2} + \C{17}{3}\C{16}{1} + \C{16}{4} \text{ cách.}$
+		
+		\vspace{0.3cm}
+		
+		\noindent Việc giải quyết câu hỏi mở rộng đã giúp chúng ta rõ hơn về tư duy phân tập, đến đây ta đã trang bị cho bản thân một \noindent{\color{mymagenta}\bfseries tư duy phân tập đồng dư.}
+		
+		\vspace{0.3cm}
+		
+	\noindent{\color{myred}\bfseries MỞ RỘNG 02:} Chắc sau khi nắm bắt được kĩ năng phân tập đồng dư, ta sẽ tự hỏi, nếu bây giờ gặp tình huống bài toán yêu cầu: ``Hãy đếm số cách chọn ra ba số từ tập \(X_2\), sao cho tích của chúng chia hết cho một luỹ thừa nào đó (chẳng hạn như tích ba số chia hết cho \(2^6\))'', thì ta sẽ phải xử lí như thế nào?
+		
+		\noindent Câu trả lời của bài toán này chúng ta sẽ bắt gặp trong đề tự luyện, đó chính là \noindent{\color{mymagenta}\bfseries tư duy phân tập lũy thừa.}
+			\vspace{0.3cm}
+		
+		\begin{enumerate}[label=\textbf{Câu \arabic*:}, leftmargin=*]
+				\setcounter{enumi}{0}
+			\item Hỏi có tất cả bao nhiêu số tự nhiên có 3 chữ số không chứa chữ số 0 và chia hết cho 3?
+			\hfill \answerbox{3}
+			
+			\item Hỏi có tất cả bao nhiêu cách chọn ra 2 số nguyên khác nhau từ tập \([1;19]\) sao cho tổng hai số nguyên này chia hết cho 3?
+			\hfill \answerbox{3}
+			
+			\item Hỏi có tất cả bao nhiêu cách chọn ra 3 số nguyên khác nhau từ tập \([1;20]\) sao cho tổng ba số nguyên này chia hết cho 3?
+			\hfill \answerbox{3}
+			
+			\item Hỏi có tất cả bao nhiêu cách chọn ra 3 số nguyên (có thể giống nhau) từ tập \([1;16]\) sao cho tổng ba số nguyên này chia hết cho 3?
+			\hfill \answerbox{3}
+			
+			\item Hỏi có tất cả bao nhiêu cách chọn ra 4 số nguyên khác nhau từ tập \([1;22]\) sao cho tổng 4 số nguyên này chia hết cho 3?
+			\hfill \answerbox{3}
+			
+			\item Hỏi có tất cả bao nhiêu cách chọn ra 3 số nguyên khác nhau từ tập \([1;12]\) sao cho tổng ba số nguyên này chia cho 3 dư 1?
+			\hfill \answerbox{3}
+			
+			\item Hỏi có tất cả bao nhiêu số tự nhiên có 3 chữ số khác nhau và chia hết cho 3?
+			\hfill \answerbox{3}
+	
+			\item Hỏi có tất cả bao nhiêu cách chọn ra bốn số tự nhiên từ tập \([1;20]\) sao cho tổng bình phương của chúng chia hết cho 3?
+			\hfill \answerbox{4}
+			
+			\item Chọn ngẫu nhiên ba số tự nhiên từ tập \([1;17]\). Hãy tính xác suất sao cho tổng lập phương của chúng chia hết cho 4 (làm tròn kết quả đến hàng phần trăm)?
+			\hfill \answerbox{4}
+			
+		\end{enumerate}
+		
+		\newpage
+		% ==================== TIÊU ĐỀ ====================
+		\phantomsection
+		\addcontentsline{toc}{section}{CHỦ ĐỀ 5. KĨ NĂNG TRIỂN KHAI XÁC SUẤT BERNOULLI}
+		\section*{Chủ đề 5}
+		\begin{tcolorbox}[colback=headerbg, colframe=headerborder, arc=3mm, boxrule=1.5pt, halign=center]
+			\textbf{\Large CHỦ ĐỀ 5.\ KĨ NĂNG KĨ NĂNG TRIỂN KHAI XÁC SUẤT BERNOULLI}
+		\end{tcolorbox}
+		
+		\vspace{0.5cm}
+		
+		\noindent{\color{mymagenta}\bfseries CÔNG THỨC TÍNH XÁC SUẤT BERNOULLI:} Xét một dãy \(n\) phép thử độc lập giống nhau, trong mỗi phép thử chỉ có hai kết quả hoặc xảy ra biến cố \(A\) hoặc không xảy ra biến cố \(A\) và \(P(A)\) không phụ thuộc vào thứ tự của phép thử. Khi đó ta có xác suất để \(A\) xảy ra đúng \(k\) lần là: \(\Comb{n}{k} \left[ P(A) \right]^k \left[ 1 - P(A) \right]^{n-k}\).
+		
+		\vspace{0.3cm}
+		
+			\noindent{\color{mymagenta}\bfseries CHỨNG MINH:} Ta chọn ra \(k\) phép thử trong \(n\) phép thử (số cách chọn là \(\Comb{n}{k}\)). Gán cho \(k\) phép thử này xảy ra \(A\), với xác suất là \(\left[ P(A) \right]^k\), còn lại \((n-k)\) phép thử gán cho xảy ra \(\overline{A}\), với xác suất là \(\left[ 1 - P(A) \right]^{n-k}\).
+		
+		\vspace{0.3cm}
+		
+		\noindent Suy ra xác suất thu được (hiển nhiên như quy tắc nhân) là: \(\Comb{n}{k} \left[ P(A) \right]^k \left[ 1 - P(A) \right]^{n-k}\).
+		
+		\vspace{0.3cm}
+		
+			\noindent{\color{mymagenta}\bfseries HỆ QUẢ:} Xác suất để biến cố \(A\) xảy ra số lần từ \(k_1\) đến \(k_2\) là:
+		
+		\vspace{0.3cm}
+		
+		\noindent \(\Comb{n}{k_1} \left[ P(A) \right]^{k_1} \left[ 1 - P(A) \right]^{n-k_1} + \dots + \Comb{n}{k_2} \left[ P(A) \right]^{k_2} \left[ 1 - P(A) \right]^{n-k_2} = \sum_{k=k_1}^{k_2} \Comb{n}{k} \left[ P(A) \right]^k \left[ 1 - P(A) \right]^{n-k}\)
+		
+		\vspace{0.5cm}
+		
+		% ==================== VÍ DỤ ====================
+		\begin{tcolorbox}[
+			colback=white,
+			colframe=black,
+			arc=0mm,
+			boxrule=0.8pt,
+			left=5pt, right=5pt, top=5pt, bottom=5pt
+			]
+			\textbf{\textcolor{blue}{\(\circledast\)} Ví dụ 1:} Một xạ thủ bắn liên tiếp nhiều lần vào bia với xác suất trong mỗi lần bắn trúng là 0,8 và bắn trượt là 0,2. Coi như tâm lí của xạ thủ là vững vàng và kết quả bắn của các lần trước không làm ảnh hưởng đến kết quả bắn của các lần tiếp theo. Biết rằng xạ thủ này đã bắn 10 lần liên tiếp.
+			\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*]
+				\item Hãy tính xác suất để xạ thủ này bắn trúng 3 lần ?
+				\item Hãy tính xác suất để xạ thủ này bắn trúng ít nhất 7 lần ?
+				\item Biết rằng xạ thủ sẽ dừng lại sau khi đã bắn trúng được đúng 4 lần. Hãy tính xác suất để xạ thủ này dừng lại ở lần bắn thứ 7 ?
+			\end{enumerate}
+		\end{tcolorbox}
+		
+		\noindent{\color{myred}\bfseries LỜI GIẢI:}
+		
+		\noindent \textbf{1.} Áp dụng công thức xác suất Bernoulli, ta có:
+		\begin{itemize}
+			\item \(B_{10}(3) = \Comb{n}{k} \left[ P(A) \right]^k \left[ 1 - P(A) \right]^{n-k} = \Comb{10}{3} \left[ 0,8 \right]^3 \left[ 1 - 0,8 \right]^{10-3} = \Comb{10}{3} \cdot 0,8^3 \cdot 0,2^7\).
+		\end{itemize}
+		
+		\noindent \textbf{2.} Áp dụng công thức, ta có: \{ít nhất 7 lần tức là xuất hiện từ 7 đến 10 lần\}
+		\begin{itemize}
+			\item \(B_{10}(7;10) = \sum_{k=7}^{10} \Comb{10}{k} \left[ P(A) \right]^k \left[ 1 - P(A) \right]^{10-k} = \sum_{k=7}^{10} \Comb{10}{k} (0,8)^k \cdot (0,2)^{10-k} = 0,87912\dots\)
+		\end{itemize}
+		
+		\noindent \textbf{3.} Để xạ thủ dừng lại ở lần thứ 7 thì lần thứ 7 phải bắn trúng và trong 6 lần trước đó bắn trúng được đúng 3 lần. Suy ra xác suất cần tìm là:
+		\begin{itemize}
+			\item \(P(A) \cdot B_6(3) = P(A) \cdot \Comb{6}{3} \left[ P(A) \right]^3 \left[ 1 - P(A) \right]^{6-3} =\)
+			\item \(= \Comb{6}{3} \left[ P(A) \right]^4 \left[ 1 - P(A) \right]^3 = \Comb{6}{3} \left[ 0,8 \right]^4 \left[ 1 - 0,8 \right]^3 = \frac{1024}{15625}\)
+		\end{itemize}
+		% ==================== TIÊU ĐỀ ====================
+		\vspace{0.5cm}
+		
+		% ==================== CÂU 1 ====================
+		\noindent \textbf{Câu 1:} Cho một dãy 12 phép thử độc lập giống nhau, trong mỗi phép thử xác suất xảy ra biến cố \(A\) là không đổi và bằng 0,7, xác suất xảy ra \(\overline{A}\) là 0,3. Hỏi mệnh đề nào dưới đây là đúng hay sai?
+		
+		\vspace{0.3cm}
+		
+		% Bảng Đúng/Sai
+		\begin{center}
+			\renewcommand{\arraystretch}{1.5}
+			\begin{tabular}{|c|p{10cm}|c|c|}
+				\hline
+				\multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{\textbf{Mệnh đề}} & \textbf{\textcolor{blue}{Đ}} & \textbf{\textcolor{red}{S}} \\
+				\hline
+				\cellcolor{tablegreen}a & Xác suất để xảy ra biến cố \(A\) đúng 5 lần là 0,029 (làm tròn kết quả đến hàng phần nghìn). & \cellcolor{tableblue}\begin{tikzpicture}\draw[thick] (0,0) circle (0.2);\end{tikzpicture} & \cellcolor{tablepink}\begin{tikzpicture}\draw[thick] (0,0) circle (0.2);\end{tikzpicture} \\
+				\hline
+				\cellcolor{tablegreen}b & Xác suất để xảy ra biến cố \(A\) đúng 7 lần là 0,158 (làm tròn kết quả đến hàng phần nghìn). & \cellcolor{tableblue}\begin{tikzpicture}\draw[thick] (0,0) circle (0.2);\end{tikzpicture} & \cellcolor{tablepink}\begin{tikzpicture}\draw[thick] (0,0) circle (0.2);\end{tikzpicture} \\
+				\hline
+				\cellcolor{tablegreen}c & Xác suất để xảy ra biến cố \(A\) từ 5 đến 9 lần là 0,738 (làm tròn kết quả đến hàng phần nghìn). & \cellcolor{tableblue}\begin{tikzpicture}\draw[thick] (0,0) circle (0.2);\end{tikzpicture} & \cellcolor{tablepink}\begin{tikzpicture}\draw[thick] (0,0) circle (0.2);\end{tikzpicture} \\
+				\hline
+				\cellcolor{tablegreen}d & Giả sử chuỗi phép thử sẽ dừng lại khi biến cố \(A\) xuất hiện đúng 5 lần. Xác suất để chuỗi phép thử dừng lại ở lần 9 là 0,095 (làm tròn kết quả đến hàng phần nghìn). & \cellcolor{tableblue}\begin{tikzpicture}\draw[thick] (0,0) circle (0.2);\end{tikzpicture} & \cellcolor{tablepink}\begin{tikzpicture}\draw[thick] (0,0) circle (0.2);\end{tikzpicture} \\
+				\hline
+			\end{tabular}
+		\end{center}
+		
+		\vspace{0.5cm}
+		
+		% ==================== CÂU 2 ====================
+		\noindent \textbf{Câu 2:} Một xạ thủ bắn liên tiếp 9 lần vào bia với xác suất trong mỗi lần bắn trúng là 0,8 và bắn trượt là 0,2. Coi như tâm lí của xạ thủ là vững vàng và kết quả bắn của các lần trước không làm ảnh hưởng đến kết quả bắn của các lần tiếp theo. Hãy tính xác suất để xạ thủ này bắn trúng được 4 lần (làm tròn đến hàng phần trăm)?
+		\hfill \answerbox{4}
+		
+		\vspace{0.5cm}
+	
+		% ==================== CÂU 3 ====================
+		\noindent \textbf{Câu 3:} Một xạ thủ bắn liên tiếp nhiều lần vào bia với xác suất trong mỗi lần bắn trúng là 0,9 và bắn trượt là 0,1. Coi như tâm lí của xạ thủ là vững vàng và kết quả bắn của các lần trước không làm ảnh hưởng đến kết quả bắn của các lần tiếp theo. Biết rằng xạ thủ sẽ dừng lại nếu bắn trúng được 5 lần. Hãy tính xác suất để xạ thủ này dừng lại sau 7 lần bắn (làm tròn kết quả đến hàng phần trăm)?
+		\hfill \answerbox{4}
+		\vspace{0.5cm}
+		
+		% ==================== CÂU 6 ====================
+		\noindent \textbf{Câu 4:} Một em học sinh lười học cho nên bước vào phòng thi học kì với tâm lí sẽ khoanh ngẫu nhiên cả đề thi. Biết bố cục đề thi gồm 10 câu trắc nghiệm bốn đáp án A, B, C, D; chỉ có một đáp án đúng, đúng một câu được 1 điểm và sai một câu sẽ không bị trừ điểm. Hãy tính xác suất để em học sinh này không vượt quá 3 điểm (làm tròn kết quả đến hàng phần trăm)?
+		\hfill \answerbox{4}
+		
+		\vspace{0.5cm}
+		
+		% ==================== CÂU 7 ====================
+		\noindent \textbf{Câu 5:} Cho 5 hành khách bước lên 3 toa tàu một cách ngẫu nhiên. Hãy tính xác suất để có một toa có đúng 3 hành khách (làm tròn kết quả đến hàng phần trăm)?
+		\hfill \answerbox{4}
+		\newpage
+		% ==================== TIÊU ĐỀ CHỦ ĐỀ ====================
+		\phantomsection
+		\addcontentsline{toc}{section}{CHỦ ĐỀ 6. QUY HOẠCH ĐỘNG}
+	\section*{Chủ đề 6}
+	\begin{tcolorbox}[colback=headerbg, colframe=headerborder, arc=3mm, boxrule=1.5pt, halign=center]
+		\textbf{\Large CHỦ ĐỀ 6.\ QUY HOẠCH ĐỘNG}
+	\end{tcolorbox}
+		
+		\vspace{0.3cm}
+		
+		\noindent Nhiều “sự kiện” trong thực tế thực chất là kết quả của một chuỗi các sự kiện nhỏ hơn lặp đi lặp lại theo cùng một cấu trúc
+		
+		\vspace{0.3cm}
+		
+		\noindent Chẳng hạn, để xác định đội vô địch V-League, giải đấu phải diễn ra qua nhiều vòng đấu, mỗi vòng gồm nhiều trận bóng. Mỗi trận lại được chia thành hai hiệp chính, và nếu cần thiết có thể có hiệp phụ hoặc loạt sút luân lưu để phân định thắng thua.
+		
+		\vspace{0.3cm}
+		
+		\noindent Như vậy, việc xác định nhà vô địch của cả mùa giải được xây dựng từ kết quả của từng vòng đấu, mỗi vòng lại được xây dựng từ kết quả của từng trận, và mỗi trận lại được xác định từ kết quả của từng hiệp — các cấp độ lồng vào nhau theo cùng một khuôn mẫu.
+		
+		\vspace{0.5cm}
+		
+		% ==================== BÀI TOÁN BƯỚC CẦU THANG ====================
+		\noindent{\color{mymagenta}\bfseries BÀI TOÁN CẦU THANG}
+		
+		\vspace{0.2cm}
+		
+			\noindent\fbox{
+			\parbox{0.96\textwidth}{
+				\textbf{\color{blue}$\boldsymbol{\otimes}$ Ví dụ 1:} Một cầu thang có 10 bậc. An có thể bước lên trên 1 bậc hoặc 2 bậc trong một lần bước. Hỏi An có bao nhiêu cách khác nhau để bước hết cầu thang?
+			}
+		}	
+		\vspace{0.5cm}
+		
+		% ==================== PHÂN TÍCH ====================
+	\noindent{\color{myred}\bfseries PHÂN TÍCH}
+		
+		\vspace{0.2cm}
+		
+		\noindent \textbf{Ý tưởng cốt lõi của quy hoạch động}
+		
+		\noindent Quy hoạch động là phương pháp chia một bài toán lớn thành các bài toán nhỏ hơn, trong đó:
+		\begin{itemize}
+			\item Mỗi bài toán nhỏ được giải dựa trên kết quả của các bài toán nhỏ hơn trước đó.
+			\item Ta lưu lại kết quả đã tính để dùng cho các bước sau, tránh tính lặp
+		\end{itemize}
+		
+		\noindent Ở bài toán này:
+		\begin{itemize}
+			\item Bài toán lớn là: đếm số cách bước lên bậc thứ 10
+			\item Bài toán nhỏ là: đếm số cách bước lên các bậc thấp hơn
+		\end{itemize}
+		
+		\vspace{0.3cm}
+		
+			\noindent{\color{mymagenta}\bfseries LỜI GIẢI:}
+		
+		\vspace{0.2cm}
+		
+		\noindent Gọi \(u_n\) là số cách bước lên bậc thứ \(n\). Mục tiêu của bài toán là tìm \(u_{10}\).
+		Xác định trạng thái ban đầu
+		\begin{itemize}
+			\item Bậc thứ 1 \\
+			Chỉ có 1 cách duy nhất (bước 1 bậc), \(u_1 = 1\).
+			\item Bậc thứ 2 \\
+			Có 2 cách (\(1 + 1; 2\)), \(u_2 = 2\).
+		\end{itemize}
+		
+		\vspace{0.3cm}
+		
+		\noindent Thiết lập quy luật truy hồi
+		\begin{itemize}
+			\item Xét bậc thứ 3, để lên bậc thứ ba thì bước cuối cùng chỉ có thể:
+			\begin{itemize}
+				\item Từ bậc thứ 2 lên 1 bậc, hoặc
+				\item Từ bậc 1 lên 2 bậc
+			\end{itemize}
+			\item Vì vậy \(u_3 = u_1 + u_2\)
+			\item Tương tự với bậc thứ 4, ta có \(u_4 = u_3 + u_2\)
+			\item Nhận xét quan trọng: Với \(n \ge 3\) thì \(u_n = u_{n-1} + u_{n-2}\). Đây chính là công thức truy hồi, thể hiện rõ tư duy quy hoạch động: Số cách lên bậc thứ \(n\) được xây dựng từ các kết quả đã biết ở bậc thứ \(n-1\) và \(n-2\).
+		\end{itemize}
+		
+		\vspace{0.3cm}
+		
+		\noindent Tính lần lượt các giá trị
+		
+		\vspace{0.3cm}
+		
+		% Bảng tính giá trị
+		\begin{center}
+			\renewcommand{\arraystretch}{1.5}
+			\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+				\hline
+				\textbf{Bậc} & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+				\hline
+				\textbf{Số cách} & 1 & 2 & 1+2=3 & 2+3=5 & 3+5=8 & 5+8=13 & 8+13=21 & 13+21=34 & 21+34=55 & 34+55=89 \\
+				\hline
+			\end{tabular}
+		\end{center}
+		
+		\vspace{0.3cm}
+		
+		\noindent Vậy số cách An bước hết 10 bậc cầu thang là 89 cách.
+		% ==================== TIÊU ĐỀ ====================
+			\vspace{0.3cm}
+		
+	\noindent{\color{mymagenta}\bfseries BÀI TOÁN CON BỌ DI CHUYỂN TRÊN CẠNH TỨ DIỆN, HÌNH LẬP PHƯƠNG}
+		
+		\vspace{0.2cm}
+		
+		\noindent{\color{mymagenta}\bfseries VÍ DỤ 2:}
+		
+		\begin{enumerate}[label=\alph*)]
+			\item Một con bọ đang ở đỉnh \(A\) của một tứ diện đều. Đầu mỗi phút, nó ngẫu nhiên chọn một trong các cạnh đi ra từ đỉnh hiện tại rồi bò dọc theo cạnh đó sang đỉnh kề bên. Nó mất 1 phút để bò sang đỉnh kế; tới đó nó lại chọn ngẫu nhiên một cạnh khác và tiếp tục bò. Hỏi xác suất để sau 6 phút nó quay lại đỉnh \(A\) là bao nhiêu?
+			\item Làm lại câu a, nhưng lần này con bọ bò trên các cạnh của một hình lập phương.
+		\end{enumerate}
+		
+		\vspace{0.3cm}
+		
+	\noindent{\color{mymagenta}\bfseries GHI NHỚ}
+		
+		\noindent Cố gắng chọn các trạng thái càng đơn giản càng tốt. Trong các bài toán dùng trạng thái, việc tìm được tập trạng thái đơn giản nhất thường là một bước lớn hướng tới lời giải.
+	
+		\vspace{0.3cm}
+		
+		\noindent \textbf{Trạng thái} là cách mô tả một giai đoạn trung gian của một sự kiện. Nhờ các trạng thái, ta có thể chia một sự kiện phức tạp thành nhiều sự kiện đơn giản, dễ xử lý hơn.
+		
+		\noindent Với bài toán có nhiều trạng thái, thường rất hữu ích khi vẽ sơ đồ. Vẽ một ô (hoặc nút) cho mỗi trạng thái và vẽ mũi tên cho các chuyển tiếp giữa chúng. Ghi xác suất hoặc giá trị kỳ vọng thích hợp lên sơ đồ.
+		
+		\noindent Cố gắng chọn các trạng thái \textbf{đơn giản nhất có thể}. Trong các bài toán dùng trạng thái, việc tìm ra được tập trạng thái thật đơn giản thường là một bước quan trọng để giải bài.
+		
+		\noindent Thường ta nên đưa vào các biến lưu trữ thông tin về những trạng thái trung gian. Điều này đặc biệt quan trọng với các sự kiện có thể kéo dài qua một chuỗi trạng thái rất dài (về lý thuyết là vô hạn).
+		
+		\vspace{0.5cm}
+
+		\noindent \textbf{Câu 1:} Một cầu thang có 12 bậc. An có thể bước lên trên 1 bậc hoặc 3 bậc mỗi lần. Hỏi có bao nhiêu cách để An bước hết cầu thang? \\
+			\(\Rightarrow\) \textbf{Đáp số:} .........
+			
+			\noindent \textbf{Câu 2:} Một cầu thang có 12 bậc. An có thể bước lên trên 1 bậc hoặc 2 bậc mỗi lần. Biết bậc thứ 6 bị hỏng và không thể bước lên được. Hỏi An có bao nhiêu cách khác nhau để bước hết lên các bậc cầu thang? \\
+			\(\Rightarrow\) \textbf{Đáp số:} .........
+			
+		\noindent \textbf{Câu 3:} Một người cần bước lên một bậc thang có 10 bậc. Biết người đó đang ở bậc thềm (bậc số 0) và người đó chỉ có thể bước tối đa 3 bậc. Tính số cách người đó bước đến hết cầu thang. \\
+			\(\Rightarrow\) \textbf{Đáp số:} .........
+			
+		\noindent \textbf{Câu 4:} Một phần mềm máy tính có thiết lập một đoạn mã chứa mật khẩu để mở phần mềm đó. Mỗi đoạn mã mật khẩu đều gồm 8 ký tự là \(T\) và \(E\), sao cho hai ký tự \(T\) không được đứng cạnh nhau (ví dụ \(TETEEETE\) là 1 đoạn mã thỏa mãn). Có bao nhiêu mật khẩu có thể tạo thành? \\
+			\(\Rightarrow\) \textbf{Đáp số:} .........
+			
+			\noindent \textbf{Câu 5:} Một người muốn tô màu vào 9 ô vuông giống nhau như hình vẽ, mỗi ô vuông được tô bởi một trong hai màu xanh hoặc đỏ một cách ngẫu nhiên. \\
+			\begin{center}
+				\begin{tikzpicture}[scale=0.6]
+					\foreach \x in {0,1,2,3,4,5,6,7,8} {
+						\draw[thick] (\x, 0) rectangle (\x+0.8, 0.8);
+					}
+				\end{tikzpicture}
+			\end{center}
+			Có bao nhiêu cách tô màu mà không có hai ô vuông màu xanh nào xếp cạnh nhau? \\
+			\(\Rightarrow\) \textbf{Đáp số:} .........
+			
+		\noindent \textbf{Câu 6:} Tung lần lượt một đồng xu cân đối đồng chất 4 lần. Xác suất để nhận được hai mặt sấp liên tiếp là bao nhiêu? \\
+			\(\Rightarrow\) \textbf{Đáp số:} .........
+			
+			\noindent \textbf{Câu 7:} Tung lần lượt một đồng xu cân đối đồng chất 15 lần. Xác suất để nhận được hai mặt sấp liên tiếp là bao nhiêu? \\
+			\(\Rightarrow\) \textbf{Đáp số:} .........
+		
+		\noindent \textbf{Câu 8:} Có các lá sen xếp thành một hàng, được đánh số từ 0 đến 11. Có thú săn mồi nằm phục sẵn ở lá sen số 3 và số 6, và một mẫu thức ăn ở lá sen số 10. Chú ếch bắt đầu từ lá số 0; từ bất kỳ lá sen nào, chú ếch có \(\frac{1}{2}\) cơ hội nhảy sang lá kế tiếp và \(\frac{1}{2}\) cơ hội nhảy cách quãng 2 lá. Hỏi xác suất để ếch đến được lá số 10 mà không đáp xuống lá số 3 hay lá số 6 là bao nhiêu? \\
+			\(\Rightarrow\) \textbf{Đáp số:} .........
+			
+			\noindent \textbf{Câu 9:} Cho ba điểm \(A, B, C\) được sắp xếp cùng chiều kim đồng hồ như hình vẽ.
+			
+			\begin{center}
+				\begin{tikzpicture}[scale=1]
+					\draw[thick] (0,0) circle (2cm);
+					\node[circle, fill=gray, inner sep=2pt, label=below:\(A\)] (A) at (270:2) {};
+					\node[circle, fill=gray, inner sep=2pt, label=above left:\(B\)] (B) at (150:2) {};
+					\node[circle, fill=gray, inner sep=2pt, label=above right:\(C\)] (C) at (30:2) {};
+					\node at (270:2) [below=0.3cm] {A};
+				\end{tikzpicture}
+			\end{center}
+			
+			Bạn An đặt một con cờ ở vị trí \(A\). Sau đó tung một con xúc xắc sáu mặt đồng chất và di chuyển con cờ theo quy luật sau:
+			\begin{itemize}
+				\item Nếu ra mặt 1 hoặc 2 thì sẽ giữ nguyên vị trí điểm \(A\).
+				\item Nếu ra mặt 3 hoặc 4 thì sẽ di chuyển vị trí điểm \(A\) một bước theo chiều kim đồng hồ.
+				\item Nếu ra mặt 5 hoặc 6 thì sẽ di chuyển vị trí điểm \(A\) một bước ngược chiều kim đồng hồ.
+			\end{itemize}
+			Xác suất để sau 8 lần tung quân cờ ở vị trí điểm \(A\). \\
+			\(\Rightarrow\) \textbf{Đáp số:} .........
+	\newpage
+% ==================== TIÊU ĐỀ KẾT LUẬN ====================
+\phantomsection
+\addcontentsline{toc}{section}{KẾT LUẬN}
+\section{KẾT LUẬN}
+\begin{tcolorbox}[colback=headerbg, colframe=maincolor, arc=3mm, boxrule=1.5pt, halign=center]
+	\textbf{\LARGE KẾT LUẬN}
+\end{tcolorbox}
+
+\vspace{0.5cm}
+
+% ==================== NỘI DUNG (ĐÃ THỤT ĐẦU DÒNG) ====================
+\indent Dự án nghiên cứu và tổng hợp các chủ đề về Tổ hợp -- Xác suất nâng cao đã khép lại, mang đến một góc nhìn toàn diện và hệ thống về các phương pháp giải toán tối ưu. Qua việc phân tích từ lý thuyết nền tảng đến các ứng dụng thực tế thông qua 6 chuyên đề trọng tâm, dự án đã làm nổi bật mối liên kết chặt chẽ giữa tư duy thuật toán (như Quy hoạch động) và các công cụ đại số -- tổ hợp kinh điển (như Nguyên lý Bao hàm -- Nội trừ, Bài toán Chia kẹo Euler, Xác suất Bernoulli).
+\vspace{0.3cm}
+
+\indent Việc làm chủ các kỹ thuật phân tập, thiết lập vách ngăn hay xây dựng công thức truy hồi không chỉ giúp đơn giản hóa các bài toán đếm và tính xác suất phức tạp, mà còn rèn luyện cho người học khả năng quan sát cấu trúc bài toán một cách trực quan và mạch lạc.
+\vspace{0.3cm}
+
+\indent Dù đã dành nhiều tâm huyết để biên soạn và hệ thống hóa kiến thức một cách chỉn chu nhất, tài liệu khó tránh khỏi những hạn chế nhất định. Tôi rất mong nhận được những đóng góp quý báu từ quý thầy cô và các em học sinh để hoàn thiện dự án hơn nữa trong các lần tái bản tiếp theo. Hy vọng bộ tài liệu này sẽ là nguồn tư liệu tham khảo giá trị, tiếp thêm động lực và sự tự tin cho các em trên con đường chinh phục các đỉnh cao Toán học.
+		
+		\newpage
+		\phantomsection
+		\addcontentsline{toc}{section}{TÀI LIỆU THAM KHẢO}
+		\section*{TÀI LIỆU THAM KHẢO}
+		
+		\begin{tcolorbox}[colback=headerbg, colframe=maincolor, arc=3mm, boxrule=1.5pt, halign=center]
+			\textbf{\LARGE TÀI LIỆU THAM KHẢO}
+		\end{tcolorbox}
+		
+		\vspace{0.5cm}
+		
+		\begin{enumerate}[label=\textbf{[\arabic*]}, leftmargin=*, itemsep=0.3cm]
+			\item Bộ Giáo dục và Đào tạo. \textit{Sách giáo khoa Toán 10, 11, 12 }. Hà Nội: NXB Giáo dục Việt Nam.
+			
+			\item Đỗ Văn Đức. \textit{Chinh Phục Tổ Hợp Xác Suất}. Hà Nội: NXB Dân trí.
+			
+			\item Đỗ Văn Đức. \textit{Hành trình chinh phục Toán 12 - Tập 2 (Nguyên hàm, Tích phân, OXYZ, Xác suất)}. Hà Nội: NXB Văn hoá dân tộc.
+			
+			\item Nguồn tài liệu trực tuyến: \textit{Diễn đàn Toán học VMF}, \textit{ToanMath.com}, \textit{VMF - Vietnam Mathematics Forum}.
+			
+			
+		\end{enumerate}
+\end{document}
