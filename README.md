@@ -101,3 +101,33 @@ TÀI LIỆU CHUYÊN ĐỀ
 └── PHẦN III: KẾT LUẬN VÀ TÀI LIỆU THAM KHẢO
     ├── Tổng kết giá trị ứng dụng của chuyên đề
     └── Danh mục Tài liệu tham khảo
+## III. KẾ HOẠCH VÀ TIẾN ĐỘ THỰC HIỆN (2 TUẦN)
+
+### TUẦN 1
+
+- [ ] Thu thập, phân loại tài liệu tham khảo.
+- [ ] Viết Lời mở đầu, Phần mở đầu (Lý do, Mục tiêu, Phạm vi).
+- [ ] Biên soạn **Chủ đề 1:** Nguyên lý Bao hàm – Nội trừ.
+- [ ] Biên soạn **Chủ đề 2:** Sắp xếp vị trí – Vách ngăn.
+- [ ] Biên soạn **Chủ đề 3:** Bài toán Chia kẹo Euler; Tổng hợp 3 hệ quả mở rộng về bất phương trình nghiệm nguyên.
+- [ ] Báo cáo tiến độ Tuần 1.
+
+### TUẦN 2
+
+- [ ] Biên soạn **Chủ đề 4:** Kỹ năng Phân tập (Đồng dư & Lũy thừa).
+- [ ] Xây dựng quy trình liệt kê chuỗi số dư.
+- [ ] Biên soạn **Chủ đề 5:** Xác suất Bernoulli.
+- [ ] Biên soạn **Chủ đề 6:** Quy hoạch động trong Tổ hợp.
+- [ ] Soạn thảo Phần Kết luận & Tài liệu tham khảo.
+- [ ] Nghiệm thu toàn bộ dự án.
+
+---
+
+## IV. TÀI LIỆU THAM KHẢO (DỰ KIẾN)
+
+1. Bộ Giáo dục và Đào tạo, *Sách giáo khoa Toán 10, 11, 12*, NXB Giáo dục Việt Nam.
+2. Đỗ Văn Đức (2025), *Chinh Phục Tổ Hợp Xác Suất*, NXB Dân trí.
+3. Đỗ Văn Đức (2024), *Hành trình chinh phục Toán 12 – Tập 2 (Nguyên hàm, Tích phân, OXYZ, Xác suất)*, NXB Văn hóa dân tộc.
+4. Nguyễn Đăng Trí (2022), *Phương pháp giải bài toán Tổ hợp & Xác suất nâng cao*, NXB Đại học Quốc gia Hà Nội.
+5. Lê Hoành Phò (2021), *Chuyên đề Đại số Tổ hợp và Xác suất cho học sinh chuyên Toán*, NXB Đại học Quốc gia TP.HCM.
+6. Nguyễn Văn Mẫn, Phạm Hồng Hải (2020), *Bồi dưỡng Học sinh giỏi Đại số Tổ hợp – Xác suất THPT*, NXB Giáo dục Việt Nam.
