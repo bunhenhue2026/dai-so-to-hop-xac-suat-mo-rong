@@ -3,27 +3,6 @@
 > **Dự án:** Đại số Tổ hợp – Xác suất mở rộng  
 > **Cấu trúc:** 6 chủ đề trọng tâm – Lý thuyết, ví dụ minh họa, phân tích bài toán, bài tập tự luyện  
 > **Thời gian thực hiện:** 2 tuần
-
----
-
-## MỤC LỤC
-
-- [PHẦN I. LỜI MỞ ĐẦU VÀ PHẦN MỞ ĐẦU](#phần-i-lời-mở-đầu-và-phần-mở-đầu)
-  - [1. Lý do chọn đề tài](#1-lý-do-chọn-đề-tài)
-  - [2. Mục đích và nhiệm vụ nghiên cứu](#2-mục-đích-và-nhiệm-vụ-nghiên-cứu)
-  - [3. Đối tượng và phạm vi nghiên cứu](#3-đối-tượng-và-phạm-vi-nghiên-cứu)
-- [PHẦN II. NỘI DUNG CHÍNH (6 CHỦ ĐỀ TRỌNG TÂM)](#phần-ii-nội-dung-chính-6-chủ-đề-trọng-tâm)
-  - [Chủ đề 1. Nguyên lý Bao hàm – Nội trừ](#chủ-đề-1-nguyên-lý-bao-hàm--nội-trừ)
-  - [Chủ đề 2. Sắp xếp vị trí & Vách ngăn](#chủ-đề-2-sắp-xếp-vị-trí--vách-ngăn)
-  - [Chủ đề 3. Bài toán Chia kẹo Euler](#chủ-đề-3-bài-toán-chia-kẹo-euler)
-  - [Chủ đề 4. Kỹ năng Phân tập trong bài toán đếm](#chủ-đề-4-kỹ-năng-phân-tập-trong-bài-toán-đếm)
-  - [Chủ đề 5. Kỹ năng triển khai Xác suất Bernoulli](#chủ-đề-5-kỹ-năng-triển-khai-xác-suất-bernoulli)
-  - [Chủ đề 6. Phương pháp Quy hoạch động](#chủ-đề-6-phương-pháp-quy-hoạch-động)
-- [PHẦN III. KẾT LUẬN VÀ TÀI LIỆU THAM KHẢO](#phần-iii-kết-luận-và-tài-liệu-tham-khảo)
-- [PHỤ LỤC. KẾ HOẠCH VÀ TIẾN ĐỘ THỰC HIỆN](#phụ-lục-kế-hoạch-và-tiến-độ-thực-hiện)
-
----
-
 ## PHẦN I. LỜI MỞ ĐẦU VÀ PHẦN MỞ ĐẦU
 
 ### 1. Lý do chọn đề tài
