@@ -19,7 +19,7 @@ Thực tế giảng dạy cho thấy học sinh thường gặp nhiều khó kh�
 
 ### 2. Mục đích và nhiệm vụ nghiên cứu
 
-**Mục đích:** Hệ thống hóa các phương pháp giải toán tổ hợp – xác suất nâng cao; xây dựng hệ thống ví dụ minh họa, phân tích sai lầm thường gặp và cung cấp bộ bài tập phân loại theo các chủ đề trọng tâm.
+**Mục đích:** Hệ thống hóa các phương pháp giải toán tổ hợp – xác suất nâng cao; xây dựng hệ thống ví dụ minh họa, phân tích bài toán và cung cấp bộ bài tập phân loại theo các chủ đề trọng tâm.
 
 **Nhiệm vụ:**
 
